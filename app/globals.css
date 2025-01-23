@@ -2,20 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+:root{
+    --color-primary: #005155;
+    --color-green-1: #144144;
+    --color-green-2:#35D5DD;
+    --color-green-3: #9BCBCE;
+    --color-green-4: #093032;
+    --color-green-5: #DCFDFF;
+    --color-green-6: #649C9F;
+    --color-green-7: #DFFCFD;
+    --color-green-8: #8DBFC1;
+    --color-green-9: #179FA4;
+    --color-green-10: #134143;
+    --color-green-11: #2F696C;
+    --color-green-12: #31C6CD;
+    --color-green-13: #254446;
+    --color-green-14: #B2E0E3;
+    --color-blue: #4D76C4;
+    --color-dark: #041D1E;
+    --color-white: #FFFFFF;
+    --color-grey: #D9D9D9;
+    --color-yellow: #DFB52B;
+    --color-red: #DA304C;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
