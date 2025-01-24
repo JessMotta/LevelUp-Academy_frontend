@@ -1,7 +1,13 @@
+import CardUser from "./components/CardUser/CardUser";
+import Header from "./components/Header/Header";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Home rodando</h1>
+    <div className="md:w-[480px] mx-auto bg-dark"> 
+    <Header/>
+      <CardUser>
+          Nome da aluna
+      </CardUser>
     </div>
   );
 }
