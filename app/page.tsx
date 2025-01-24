@@ -5,9 +5,7 @@ export default function Home() {
   return (
     <div className="md:w-[480px] mx-auto bg-dark"> 
     <Header/>
-      <CardUser>
-          Nome da aluna
-      </CardUser>
+      <CardUser/>
     </div>
   );
 }
