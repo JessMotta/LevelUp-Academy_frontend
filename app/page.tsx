@@ -1,4 +1,4 @@
-import { Login } from "./components/login";
+import { Login } from "../components/page-templates/login";
 
 export default function Home() {
   return (
