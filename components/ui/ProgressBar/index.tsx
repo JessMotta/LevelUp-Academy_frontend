@@ -1,8 +1,8 @@
-'use client'
-/*import { useState } from "react";*/
-const ProgressBar = () => {
-    /*const [progress, setProgress] = useState(0);*/
-    const progress = 40;
+type ProgressBarProps = {
+    percent: number;
+}
+const ProgressBar = (percent:ProgressBarProps) => {
+    const progress = percent.percent;
 
     return(
         <div className="w-[205px]">

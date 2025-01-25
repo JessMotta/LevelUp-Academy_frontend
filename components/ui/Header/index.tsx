@@ -1,4 +1,4 @@
-import EduIcon from 'public/assets/edu-icon.svg';
+import EduIcon from '/public/assets/edu-icon.svg';
 import { IoMenu } from "react-icons/io5";
 import Image from 'next/image';
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
             alt='EduIcon'
             width={32} />
         </button>
-        <button><IoMenu className='w-8'/></button>
+        <button><IoMenu className='w-8 fill-green-12'/></button>
         </div>
     )
 }
