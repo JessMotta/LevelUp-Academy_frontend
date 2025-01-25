@@ -1,4 +1,5 @@
 import "./globals.css";
+
 export const metadata = {
   title: 'LevelUp Academy',
   description: 'Gamificação para a área educacional',

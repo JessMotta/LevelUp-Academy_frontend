@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import ProfileImage from '/app/images/profile.svg'
+import ProfileImage from '/public/assets/profile.svg'
 import { IoLogoElectron } from "react-icons/io5";
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from '../ProgressBar';
 
 
 const CardUser = () => {
