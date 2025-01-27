@@ -1,11 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import loginImage from "@/public/assets/login-image.png";
 import logo from "@/public/assets/logo.svg";
+import { useSessionContext } from "@/providers/AuthProvider";
 
 export const Login = () => {
+  const [username, setUsername] = useState<string | undefined>(undefined);
+  const [password, setPassword] = useState<string | undefined>(undefined);
+
+  const { login } = useSessionContext();
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    if (!username || !password) return;
+
+    await login(username, password);
+  };
+
+  const changeUsernameValue = (value: string) => {
+    setUsername(value);
+  };
+  const changePasswordValue = (value: string) => {
+    setPassword(value);
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4 md:px-16">
       <div className="absolute top-6 left-10 flex items-center gap-3 sm:w-1/5">
@@ -28,6 +49,8 @@ export const Login = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full p-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(e) => changeUsernameValue(e.target.value)}
+                value={username}
               />
             </div>
             <div>
@@ -36,6 +59,8 @@ export const Login = () => {
                 type="password"
                 placeholder="Enter your password"
                 className="w-full p-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(e) => changePasswordValue(e.target.value)}
+                value={password}
               />
             </div>
             <div className="flex items-center">
@@ -45,8 +70,12 @@ export const Login = () => {
               </span>
             </div>
           </form>
-          <button className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
-            <a href="/aluno">Entrar</a>
+          <button
+            className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
+            onClick={handleSubmit}
+            disabled={username === "" || password === ""}
+          >
+            Entrar
           </button>
         </div>
 
