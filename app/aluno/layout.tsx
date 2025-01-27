@@ -5,11 +5,13 @@ interface StudentLayoutProps {
   children: ReactNode;
 }
 
+const studentMenuOptions = [{ label: "Minhas disciplinas", path: "/" }];
+
 export default function StudentLayout({ children }: StudentLayoutProps) {
   return (
-    <div className="w-full h-full overflow-y-scroll bg-brand-1000">
-      <Navbar menuItems={[{ label: "Minhas disciplinas", path: "/" }]} />
-      <div className="mt-4">{children}</div>
+    <div className="w-full h-full mx-auto bg-dark">
+      <Navbar menuItems={studentMenuOptions} />
+      <div>{children}</div>
     </div>
   );
 }

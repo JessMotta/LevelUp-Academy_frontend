@@ -1,9 +1,5 @@
-import { Login } from "../components/page-templates/login";
+import { Login } from "@/components/page-templates/login";
 
 export default function Home() {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+  return <Login />;
 }

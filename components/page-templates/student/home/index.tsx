@@ -1,3 +1,9 @@
+import CardUser from "@/components/ui/CardUser";
+
 export default function StudentHomeTemplate() {
-  return <div>Aqui ficará a página inicial dos alunos</div>;
+  return (
+    <div className="w-full flex flex-col justify-center">
+      <CardUser />
+    </div>
+  );
 }
