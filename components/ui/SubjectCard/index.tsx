@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import starSvg from "@/public/assets/star.svg";
 import { SubjectReport } from "@/types/types";
+import { useRouter } from "next/navigation";
 
 interface DisciplinaCardProps {
   studentReport: SubjectReport;
@@ -18,6 +19,8 @@ function SubjectCard({ studentReport }: DisciplinaCardProps) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   const { id, subject, teacher, average, attendency } = studentReport;
+
+  const router = useRouter();
 
   useEffect(() => {
     // fazer a chamada com o ID para pegar as notificações desse aluno para essa disciplina
@@ -38,7 +41,7 @@ function SubjectCard({ studentReport }: DisciplinaCardProps) {
 
   return (
     <div
-      className="flex flex-col rounded-xl w-3/4 md:w-2/6 p-3"
+      className="flex flex-col rounded-xl w-full md:w-3/4 md:w-2/6 p-3"
       style={{ background: "var(--color-green-11)" }}
     >
       <div className="flex flex-grow justify-between">
@@ -104,9 +107,12 @@ function SubjectCard({ studentReport }: DisciplinaCardProps) {
             ))}
           </div>
         )}
-        <a href="#" className="text-sm text-white underline text-end p-2">
+        <button
+          onClick={() => router.push(`/aluno/d/${id}`)}
+          className="text-sm text-white underline text-end p-2"
+        >
           Acessar sala virtual
-        </a>
+        </button>
       </div>
     </div>
   );

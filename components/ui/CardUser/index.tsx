@@ -2,15 +2,7 @@ import Image from "next/image";
 import ProfileImage from "/public/assets/profile.svg";
 import { IoLogoElectron } from "react-icons/io5";
 import ProgressBar from "../ProgressBar";
-import { SessionStudent } from "@/types/types";
-
-const student: SessionStudent = {
-  name: "João da Silva",
-  schollYear: "7º ano",
-  patent: "Aprendiz",
-  currentExperience: 120,
-  nextPatentExperience: 300,
-};
+import { useSessionContext } from "@/providers/AuthProvider";
 
 const CardUser = () => {
   /**
@@ -19,6 +11,10 @@ const CardUser = () => {
    *
    * Talvez colocar isso num contexto
    */
+
+  const { user: student } = useSessionContext();
+
+  if (!student) return <></>;
 
   return (
     <div
