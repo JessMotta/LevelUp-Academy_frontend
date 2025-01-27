@@ -1,21 +1,17 @@
-import CardUser from "@/components/ui/CardUser";
-import Header from "@/components/ui/Header";
-//import { Navbar } from "@/components/ui/Navbar";
+import { Navbar } from "@/components/ui/Navbar";
 import { ReactNode } from "react";
 
 interface StudentLayoutProps {
   children: ReactNode;
 }
 
+const studentMenuOptions = [{ label: "Minhas disciplinas", path: "/" }];
+
 export default function StudentLayout({ children }: StudentLayoutProps) {
   return (
-    // <div className="w-full h-full overflow-y-scroll bg-brand-1000">
-    //   <Navbar menuItems={[{ label: "Minhas disciplinas", path: "/" }]} />
-    //   <div className="mt-4">{children}</div>
-    // </div>
-    <div className="md:w-[480px] mx-auto bg-dark">
-      <Header/>
-      <CardUser/>
+    <div className="w-full h-full mx-auto bg-dark">
+      <Navbar menuItems={studentMenuOptions} />
+      <div>{children}</div>
     </div>
   );
 }

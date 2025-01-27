@@ -210,7 +210,7 @@ export const Login = () => {
                     </div>
                   </form>
                   <button className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
-                    <a href="/home">Entrar</a>
+                    <a href="/aluno">Entrar</a>
                   </button>
 
                   <p className="text-center mt-6 text-gray-500">
