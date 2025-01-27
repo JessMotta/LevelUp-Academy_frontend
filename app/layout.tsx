@@ -1,3 +1,4 @@
+import { AllProviders } from "@/providers";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body>{children}</body>
+      <body>
+        <AllProviders>
+          <div className="w-full h-full">{children}</div>
+        </AllProviders>
+      </body>
     </html>
   );
 }
