@@ -5,13 +5,6 @@ import ProgressBar from "../ProgressBar";
 import { useSessionContext } from "@/providers/AuthProvider";
 
 const CardUser = () => {
-  /**
-   * IDEALMENTE
-   * com a ID a gente faria uma chamada para o endpoint de consulta que retornaria esses dados sobre o aluno
-   *
-   * Talvez colocar isso num contexto
-   */
-
   const { user: student } = useSessionContext();
 
   if (!student) return <></>;
