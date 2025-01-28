@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import ProfileImage from "/public/assets/profile.svg";
 import { IoLogoElectron } from "react-icons/io5";

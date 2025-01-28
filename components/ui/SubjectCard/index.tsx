@@ -108,7 +108,7 @@ function SubjectCard({ studentReport }: DisciplinaCardProps) {
           </div>
         )}
         <button
-          onClick={() => router.push(`/aluno/d/${id}`)}
+          onClick={() => router.push(`/aluno/disciplina/${id}`)}
           className="text-sm text-white underline text-end p-2"
         >
           Acessar sala virtual
