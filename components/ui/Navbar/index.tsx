@@ -19,8 +19,8 @@ export function Navbar({ menuItems }: NavbarProps) {
   const router = useRouter();
 
   return (
-    <div className="relative w-full">
-      <nav className="px-4 py-2 w-full h-12 bg-brand-800 flex justify-between items-center">
+    <div className="relative w-full z-20">
+      <nav className="px-4 py-2 w-full h-12 bg-brand-800 flex justify-between items-center z-10 drop-shadow-lg">
         <button onClick={() => router.push("/")}>
           <Image src={EduIcon} alt="EduIcon" width={32} />
         </button>
@@ -29,7 +29,7 @@ export function Navbar({ menuItems }: NavbarProps) {
         </button>
       </nav>
       {isMenuOpen && (
-        <div className="pt-1 py-0.5 px-2">
+        <div className="pt-1 py-0.5 px-2 absolute -z-1">
           {menuItems.map((item) => {
             return (
               <div key={item.path} onClick={() => router.push(item.path)}>
