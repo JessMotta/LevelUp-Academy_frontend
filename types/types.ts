@@ -30,3 +30,13 @@ export type Transaction = {
   amount: number;
   mode: TransactionMode;
 };
+
+export type Activity = {
+  id: string;
+  type: string;
+  group: boolean;
+  value: number;
+  studentQnt: number;
+  complete: boolean;
+  experience?: number;
+};
