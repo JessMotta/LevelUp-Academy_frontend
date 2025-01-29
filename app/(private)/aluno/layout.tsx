@@ -9,7 +9,7 @@ const studentMenuOptions = [{ label: "Minhas disciplinas", path: "/" }];
 
 export default function StudentLayout({ children }: StudentLayoutProps) {
   return (
-    <div className="w-full h-full mx-auto bg-dark">
+    <div className="w-full h-full mx-auto bg-brand-1000">
       <Navbar menuItems={studentMenuOptions} />
       <div>{children}</div>
     </div>

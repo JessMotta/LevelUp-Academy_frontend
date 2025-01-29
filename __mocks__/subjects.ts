@@ -9,14 +9,14 @@ export const SUBJECTS_MOCK: SubjectReport[] = [
     average: 77,
   },
   {
-    id: "1",
+    id: "2",
     subject: "Português",
     teacher: "Veronica Leão",
     attendency: 91,
     average: 86,
   },
   {
-    id: "1",
+    id: "3",
     subject: "Ciências",
     teacher: "Paulo Gustavo",
     attendency: 65,

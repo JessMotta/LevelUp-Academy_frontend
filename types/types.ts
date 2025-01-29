@@ -13,3 +13,20 @@ export type SessionStudent = {
   currentExperience: number;
   nextPatentExperience: number;
 };
+
+export type OwnedBenefits = {
+  id: string;
+  title: string;
+  description: string;
+  purchasedAt: string;
+};
+
+export type TransactionMode = "add" | "sub";
+
+export type Transaction = {
+  id: string;
+  titulo: string;
+  descricao: string;
+  amount: number;
+  mode: TransactionMode;
+};
