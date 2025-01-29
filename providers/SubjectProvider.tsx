@@ -74,21 +74,11 @@ export const SubjectProvider = ({
      * REQUEST
      * Fazer uma request aqui para pegar as informações de prestigio e beneficios do aluno
      */
-    requestBenefitsData();
+    requestSubjectData();
     requestTransactions();
-
-    console.log("SubjectProvider", subjectId);
   }, [subjectId]);
 
-  useEffect(() => {
-    console.log("subject", currentSubject);
-    console.log("teacher", teacher);
-    console.log("pointsAmount", pointsAmount);
-    console.log("ownedBenefits", ownedBenefits);
-  }, [transactionHistory]);
-
-  function requestBenefitsData() {
-    console.log("mock request");
+  function requestSubjectData() {
     setLoading(true);
     setTimeout(() => {
       const data = SUBJECT_DATA_MOCK;
