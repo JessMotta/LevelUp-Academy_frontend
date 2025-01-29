@@ -4,7 +4,7 @@ import darkStar from "@/public/assets/dark-star.svg";
 import { useSubjectContext } from "@/providers/SubjectProvider";
 import { TransactionMode } from "@/types/types";
 
-export const PrestigePointsHistory = () => {
+export default function PrestigePointsHistory() {
   /**
    * REQUEST
    * Essa request está acontecendo no SubjectContext
@@ -25,9 +25,9 @@ export const PrestigePointsHistory = () => {
   };
 
   return (
-    <div className="mt-4">
-      <h4 className="text-white mb-1">Extrato de prestígio</h4>
-      <div className="bg-brand-300 rounded-3xl p-7 w-full md:w-2/6">
+    <div className="flex flex-col w-full justify-center items-center gap-1 mt-2.5">
+      <h4 className="text-white mb-1 w-full">Extrato de prestígio</h4>
+      <div className="bg-brand-300 rounded-3xl px-3 py-2 w-full md:w-2/6">
         {loading && <span>Loading...</span>}
         {!loading &&
           history.map((item) => (
@@ -42,7 +42,7 @@ export const PrestigePointsHistory = () => {
                 <p className="text-sm">{item.descricao}</p>
               </div>
               <div className="flex flex-row items-center gap-0.5">
-                <h1 className="text-2xl font-bold whitespace-nowrap">
+                <h1 className="text-2xl font-semibold whitespace-nowrap">
                   {mode(item.mode)} {item.amount}
                 </h1>
                 <Image src={darkStar} alt="coin" width={30} height={30} />
@@ -52,4 +52,4 @@ export const PrestigePointsHistory = () => {
       </div>
     </div>
   );
-};
+}

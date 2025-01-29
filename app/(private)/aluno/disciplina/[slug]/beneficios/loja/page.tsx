@@ -1,7 +1,5 @@
-export default function StudentSubjectBenefits() {
-  return (
-    <div>
-      <h1>Benefícios Disponíveis</h1>
-    </div>
-  );
+import PrestigeStoreTemplate from "@/components/page-templates/student/prestige/store";
+
+export default function BenefitStorePage() {
+  return <PrestigeStoreTemplate />;
 }
