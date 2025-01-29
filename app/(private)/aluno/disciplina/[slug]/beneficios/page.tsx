@@ -1,10 +1,21 @@
-export default function SubjectBenefitsHomePage() {
-  return (
-    <div>
-      <h1>Home de Beneficios</h1>
-      <div>Loja de beneficios</div>
-      <div>Meus beneficios</div>
-      <div>Extrato beneficios</div>
-    </div>
-  );
+"use client";
+
+import SubjectPrestigeTemplate from "@/components/page-templates/student/prestige";
+import { useRouter } from "next/navigation";
+import { Usable, use } from "react";
+
+type Params = { slug: string };
+
+export default function SubjectBenefitsPage({ params }: { params: Params }) {
+  const paramsContent = use(
+    params as unknown as Usable<unknown>
+  ) as unknown as Params;
+
+  const router = useRouter();
+
+  if (!paramsContent.slug) {
+    router.push("/aluno");
+  }
+
+  return <SubjectPrestigeTemplate id={paramsContent.slug} />;
 }
