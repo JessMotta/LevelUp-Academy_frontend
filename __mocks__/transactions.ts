@@ -1,21 +1,25 @@
-export const TRANSACTIONS_MOCK = [
-  { id: "1", titulo: "Fórum", descricao: "Participou da discussão", amount: 1 },
+import { Transaction } from "@/types/types";
+
+export const TRANSACTIONS_MOCK: Transaction[] = [
+  {
+    id: "1",
+    titulo: "Fórum",
+    descricao: "Participou da discussão",
+    amount: 20,
+    mode: "add",
+  },
   {
     id: "2",
     titulo: "Quiz",
     descricao: "Completou o desafio semanal",
-    amount: 3,
+    amount: 30,
+    mode: "add",
   },
   {
     id: "3",
-    titulo: "Projeto",
-    descricao: "Finalizou uma atividade prática",
-    amount: 5,
-  },
-  {
-    id: "4",
-    titulo: "Login",
-    descricao: "Acessou a plataforma por 7 dias seguidos",
-    amount: 2,
+    titulo: "Compra de benefício",
+    descricao: "Adquiriu beneficio pipipin pop opoop",
+    amount: 50,
+    mode: "sub",
   },
 ];

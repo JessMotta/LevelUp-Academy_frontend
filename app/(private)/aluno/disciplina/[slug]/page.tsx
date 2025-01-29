@@ -2,19 +2,20 @@
 
 import StudentSubjectTemplate from "@/components/page-templates/student/subject";
 import { useRouter } from "next/navigation";
+import { Usable, use } from "react";
 
-export default function StudentSubjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const slug = params.slug;
+type Params = { slug: string };
+
+export default function StudentSubjectPage({ params }: { params: Params }) {
+  const paramsContent = use(
+    params as unknown as Usable<unknown>
+  ) as unknown as Params;
 
   const router = useRouter();
 
-  if (!slug) {
+  if (!paramsContent.slug) {
     router.push("/aluno");
   }
 
-  return <StudentSubjectTemplate id={slug} />;
+  return <StudentSubjectTemplate id={paramsContent.slug} />;
 }
