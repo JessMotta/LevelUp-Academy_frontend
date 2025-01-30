@@ -1,7 +1,6 @@
 "use client";
-import { ACTIVITIES_MOCK } from "@/__mocks__/activities";
-import { TRANSACTIONS_MOCK } from "@/__mocks__/transactions";
 import useStudentSubjectTransaction from "@/api/requests/studentSubjectTransaction";
+import useSubjectActivities from "@/api/requests/subjectActivities";
 import useSubjectData from "@/api/requests/subjectData";
 import { Activity, OwnedBenefits, Transaction } from "@/types/types";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -108,12 +107,10 @@ export const SubjectProvider = ({
     setTransactionHistory(data);
   }
 
-  function requestActivities() {
-    setLoadingActivities(true);
-    setTimeout(() => {
-      setLoadingActivities(false);
-      setActivities(ACTIVITIES_MOCK);
-    }, 1500);
+  const currSubjectActivities = useSubjectActivities(subjectId);
+  async function requestActivities() {
+    const data = await currSubjectActivities.submit();
+    setActivities(data);
   }
 
   const value = {
