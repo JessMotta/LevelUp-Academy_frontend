@@ -1,7 +1,7 @@
 "use client";
 import { ACTIVITIES_MOCK } from "@/__mocks__/activities";
-import { SUBJECT_DATA_MOCK } from "@/__mocks__/subjectMainData";
 import { TRANSACTIONS_MOCK } from "@/__mocks__/transactions";
+import useSubjectData from "@/api/requests/subjectData";
 import { Activity, OwnedBenefits, Transaction } from "@/types/types";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -58,7 +58,6 @@ export const SubjectProvider = ({
   children: React.ReactNode;
   subjectId: string;
 }) => {
-  const [loading, setLoading] = useState<boolean>(DEFAULT_VALUES.loading);
   const [currentSubject, setCurrentSubject] = useState<string | undefined>(
     DEFAULT_VALUES.subject
   );
@@ -94,16 +93,13 @@ export const SubjectProvider = ({
     requestActivities();
   }, [subjectId]);
 
-  function requestSubjectData() {
-    setLoading(true);
-    setTimeout(() => {
-      const data = SUBJECT_DATA_MOCK;
-      setCurrentSubject(data.subject);
-      setTeacher(data.teacher);
-      setPointsAmount(data.prestige.pointsAmount);
-      setOwnedBenefits(data.prestige.ownedBenefits); // vai sair
-      setLoading(false);
-    }, 1500);
+  const currSubjectRequest = useSubjectData(subjectId);
+  async function requestSubjectData() {
+    const data = await currSubjectRequest.submit();
+    setCurrentSubject(data.subject);
+    setTeacher(data.teacher);
+    setPointsAmount(data.prestige.pointsAmount);
+    setOwnedBenefits(data.prestige.ownedBenefits);
   }
 
   // vai morrer
@@ -129,7 +125,7 @@ export const SubjectProvider = ({
     teacher,
     pointsAmount,
     ownedBenefits,
-    loading,
+    loading: currSubjectRequest.loading,
     transactions: {
       history: transactionHistory,
       loading: loadingTransactions,

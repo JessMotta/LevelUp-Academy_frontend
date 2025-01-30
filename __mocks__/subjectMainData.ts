@@ -1,4 +1,4 @@
-import { OwnedBenefits } from "@/types/types";
+import { OwnedBenefits, SubjectData, SubjectPrestigeData } from "@/types/types";
 import { subDays } from "date-fns";
 
 const OWNED_BENEFITS_MOCK_1: OwnedBenefits = {
@@ -14,12 +14,12 @@ const OWNED_BENEFITS_MOCK_2: OwnedBenefits = {
   purchasedAt: subDays(new Date(), 3).toISOString(),
 };
 
-export const STUDENT_PRESTIGE_MOCK = {
+export const STUDENT_PRESTIGE_MOCK: SubjectPrestigeData = {
   pointsAmount: 130,
   ownedBenefits: [OWNED_BENEFITS_MOCK_1, OWNED_BENEFITS_MOCK_2],
 };
 
-export const SUBJECT_DATA_MOCK = {
+export const SUBJECT_DATA_MOCK: SubjectData = {
   subject: "Biologia",
   teacher: "Marcelino Coala",
   prestige: STUDENT_PRESTIGE_MOCK,
