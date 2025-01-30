@@ -41,7 +41,7 @@ function SubjectCard({ studentReport }: DisciplinaCardProps) {
 
   return (
     <div
-      className="flex flex-col rounded-xl w-full md:w-3/4 md:w-2/6 p-3"
+      className="flex flex-col rounded-xl w-full md:w-3/4 p-3"
       style={{ background: "var(--color-green-11)" }}
     >
       <div className="flex flex-grow justify-between">

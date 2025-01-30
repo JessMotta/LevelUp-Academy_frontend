@@ -1,7 +1,8 @@
 "use client";
+import { ACTIVITIES_MOCK } from "@/__mocks__/activities";
 import { SUBJECT_DATA_MOCK } from "@/__mocks__/subjectMainData";
 import { TRANSACTIONS_MOCK } from "@/__mocks__/transactions";
-import { OwnedBenefits, Transaction } from "@/types/types";
+import { Activity, OwnedBenefits, Transaction } from "@/types/types";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface SubjectContext {
@@ -15,6 +16,10 @@ interface SubjectContext {
     history: Transaction[];
     loading: boolean;
   };
+  activities: {
+    list: Activity[];
+    loading: boolean;
+  };
 }
 
 const DEFAULT_VALUES: SubjectContext = {
@@ -26,6 +31,10 @@ const DEFAULT_VALUES: SubjectContext = {
   loading: false,
   transactions: {
     history: [],
+    loading: false,
+  },
+  activities: {
+    list: [],
     loading: false,
   },
 };
@@ -68,6 +77,12 @@ export const SubjectProvider = ({
   const [transactionHistory, setTransactionHistory] = useState<Transaction[]>(
     DEFAULT_VALUES.transactions.history
   );
+  const [loadingActivities, setLoadingActivities] = useState<boolean>(
+    DEFAULT_VALUES.activities.loading
+  );
+  const [activities, setActivities] = useState<Activity[]>(
+    DEFAULT_VALUES.activities.list
+  );
 
   useEffect(() => {
     /**
@@ -76,6 +91,7 @@ export const SubjectProvider = ({
      */
     requestSubjectData();
     requestTransactions();
+    requestActivities();
   }, [subjectId]);
 
   function requestSubjectData() {
@@ -85,17 +101,26 @@ export const SubjectProvider = ({
       setCurrentSubject(data.subject);
       setTeacher(data.teacher);
       setPointsAmount(data.prestige.pointsAmount);
-      setOwnedBenefits(data.prestige.ownedBenefits);
+      setOwnedBenefits(data.prestige.ownedBenefits); // vai sair
       setLoading(false);
     }, 1500);
   }
 
+  // vai morrer
   function requestTransactions() {
     setLoadingTransactions(true);
     setTimeout(() => {
       setLoadingTransactions(false);
       setTransactionHistory(TRANSACTIONS_MOCK);
     }, 2300);
+  }
+
+  function requestActivities() {
+    setLoadingActivities(true);
+    setTimeout(() => {
+      setLoadingActivities(false);
+      setActivities(ACTIVITIES_MOCK);
+    }, 1500);
   }
 
   const value = {
@@ -108,6 +133,10 @@ export const SubjectProvider = ({
     transactions: {
       history: transactionHistory,
       loading: loadingTransactions,
+    },
+    activities: {
+      list: activities,
+      loading: loadingActivities,
     },
   };
 
