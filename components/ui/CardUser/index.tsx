@@ -2,9 +2,26 @@
 
 import Image from "next/image";
 import ProfileImage from "/public/assets/profile.svg";
-import { IoLogoElectron } from "react-icons/io5";
 import ProgressBar from "../ProgressBar";
 import { useSessionContext } from "@/providers/AuthProvider";
+
+import iniciante  from '@/public/assets/patentIcons/Iniciante.png';
+import assistente from '@/public/assets/patentIcons/Assistente.png';
+import especialista from '@/public/assets/patentIcons/Especialista.png';
+import aprendiz from '@/public/assets/patentIcons/Aprendiz.png';
+import monitor from '@/public/assets/patentIcons/Monitor.png';
+import explorador from '@/public/assets/patentIcons/Explorador.png';
+import lider from '@/public/assets/patentIcons/Lider.png';
+
+const patentIcon: { [key: string]: string } = {
+  Iniciante: iniciante.src,
+  Aprendiz: aprendiz.src,
+  Monitor: monitor.src,
+  Assistente: assistente.src,
+  Explorador: explorador.src,
+  Lider: lider.src,
+  Especialista: especialista.src,
+};
 
 const CardUser = () => {
   const { user: student } = useSessionContext();
@@ -30,7 +47,13 @@ const CardUser = () => {
           <p className="text-[10px] font-medium">{student.schollYear}</p>
           <div>
             <div className="flex items-center mt-2">
-              <IoLogoElectron className="mr-2 fill-green-12" />
+            <Image 
+              src={patentIcon[student.patent] || "@/public/assets/patentIcons/Default.png" }
+              width={24}
+              height={24}
+              alt={student.patent} 
+              className="w-6 h-6 mr-2"
+            />
               <div className="uppercase text-[10px] font-bold">
                 {student.patent}
               </div>
