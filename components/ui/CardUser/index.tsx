@@ -49,10 +49,10 @@ const CardUser = () => {
             <div className="flex items-center mt-2">
             <Image 
               src={patentIcon[student.patent] || "@/public/assets/patentIcons/Default.png" }
-              width={24}
-              height={24}
+              width={30}
+              height={30}
               alt={student.patent} 
-              className="w-6 h-6 mr-2"
+              className="w-8 h-8"
             />
               <div className="uppercase text-[10px] font-bold">
                 {student.patent}
