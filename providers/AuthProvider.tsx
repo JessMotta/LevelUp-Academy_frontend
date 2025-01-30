@@ -6,14 +6,15 @@ import storage from "@/services/storage";
 import { getUserFn, handleUserResponse } from "@/services/auth";
 import { SessionStudent } from "@/types/types";
 import { AuthResponse } from "@/types/auth";
-import { MOCK_AUTH } from "@/__mocks__/auth";
 import { isTokenValid } from "@/utils/auth";
+import authenticateUser from "@/api/requests/authentication";
 
 interface SessionContext {
   user?: SessionStudent;
   isLogged: boolean;
   authenticate: (token: AuthResponse) => void;
   login: (username: string, password: string) => void;
+  loading: boolean;
   logout: () => void;
 }
 
@@ -22,6 +23,7 @@ const DEFAULT_VALUES = {
   isLogged: storage.hasToken(),
   login: (u: string, p: string) => {},
   logout: () => {},
+  loading: false,
   authenticate: () => {},
 };
 
@@ -45,14 +47,17 @@ export const SessionProvider = ({
   const [user, setUser] = useState<SessionStudent | undefined>(
     DEFAULT_VALUES.user
   );
+  const [loading, setLoading] = useState<boolean>(DEFAULT_VALUES.loading);
   const router = useRouter();
 
   const login = async (username: string, password: string) => {
-    const auth = MOCK_AUTH;
+    setLoading(true);
+    const auth = await authenticateUser(username, password);
     if (!auth) return;
 
     await handleUserResponse(auth).then((res) => {
       setUser(res);
+      setLoading(false);
       router.push("/aluno");
     });
   };
@@ -69,9 +74,11 @@ export const SessionProvider = ({
       return;
     }
 
+    setLoading(true);
     handleUserResponse()
       .then((user) => {
         setUser(user);
+        setLoading(false);
       })
       .catch((error) => {
         // showToast({
@@ -79,6 +86,7 @@ export const SessionProvider = ({
         //   message: "Não foi possivel validar suas credenciais, faça o login",
         // });
         setTimeout(() => {
+          setLoading(false);
           router.push("/");
         }, 3000);
       });
@@ -94,6 +102,7 @@ export const SessionProvider = ({
     isLogged,
     login,
     logout,
+    loading,
     authenticate,
   };
 
