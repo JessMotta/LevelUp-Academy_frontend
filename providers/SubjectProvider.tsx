@@ -1,6 +1,7 @@
 "use client";
 import { ACTIVITIES_MOCK } from "@/__mocks__/activities";
 import { TRANSACTIONS_MOCK } from "@/__mocks__/transactions";
+import useStudentSubjectTransaction from "@/api/requests/studentSubjectTransaction";
 import useSubjectData from "@/api/requests/subjectData";
 import { Activity, OwnedBenefits, Transaction } from "@/types/types";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -70,9 +71,6 @@ export const SubjectProvider = ({
   const [ownedBenefits, setOwnedBenefits] = useState<OwnedBenefits[]>(
     DEFAULT_VALUES.ownedBenefits
   );
-  const [loadingTransactions, setLoadingTransactions] = useState<boolean>(
-    DEFAULT_VALUES.transactions.loading
-  );
   const [transactionHistory, setTransactionHistory] = useState<Transaction[]>(
     DEFAULT_VALUES.transactions.history
   );
@@ -102,13 +100,12 @@ export const SubjectProvider = ({
     setOwnedBenefits(data.prestige.ownedBenefits);
   }
 
-  // vai morrer
-  function requestTransactions() {
-    setLoadingTransactions(true);
-    setTimeout(() => {
-      setLoadingTransactions(false);
-      setTransactionHistory(TRANSACTIONS_MOCK);
-    }, 2300);
+  // NEXT STEPS: desenvolver a Entidade de Transaction para remover o mock
+  const currSubjectTransactionsRequest =
+    useStudentSubjectTransaction(subjectId);
+  async function requestTransactions() {
+    const data = await currSubjectTransactionsRequest.submit();
+    setTransactionHistory(data);
   }
 
   function requestActivities() {
@@ -128,7 +125,7 @@ export const SubjectProvider = ({
     loading: currSubjectRequest.loading,
     transactions: {
       history: transactionHistory,
-      loading: loadingTransactions,
+      loading: currSubjectTransactionsRequest.loading,
     },
     activities: {
       list: activities,
