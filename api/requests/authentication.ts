@@ -1,26 +1,52 @@
 import { AuthResponse } from "@/types/auth";
-import { MOCK_AUTH } from "@/__mocks__/auth";
-// import { API_DOMAIN } from "@/config/constants/domain";
+import { API_DOMAIN } from "@/config/constants/domain";
+import { addDays } from "date-fns";
+import { SessionStudent } from "@/types/types";
 
-// TODO: ACERTAR OS ENDPOINTS
-export default function authenticateUser(username: string, password: string) {
+type APIResponse = {
+  id: number;
+  name: string;
+  email: string;
+  experiencePoints: number;
+  currentPatent: string;
+};
+
+export default async function authenticateUser(
+  username: string,
+  password: string
+) {
   const requestParams = {
-    method: "POST",
-    body: JSON.stringify({
-      username: username.toLowerCase(),
-      password: password.toLowerCase(),
-    }),
+    method: "GET",
+    // body: JSON.stringify({
+    //   username: username.toLowerCase(),
+    //   password: password.toLowerCase(),
+    // }),
   };
 
   try {
-    // const res = fetch(`${API_DOMAIN}/users/login`, requestParams).then(
-    //   (res) => res.json()
-    // );
+    const res: APIResponse = await fetch(
+      `${API_DOMAIN}/student/1`,
+      requestParams
+    ).then((res) => res.json());
 
-    // return res;
+    console.log(res);
 
-    // TODO: remover mock
-    return MOCK_AUTH as AuthResponse;
+    if (!res) {
+      throw new Error();
+    }
+
+    return {
+      token: "mockToken",
+      expireAt: addDays(new Date(), 2).toISOString(),
+      user: {
+        id: res.id,
+        currentExperience: res.experiencePoints,
+        name: res.name,
+        patent: res.currentPatent,
+        nextPatentExperience: 10000,
+        schollYear: "mock",
+      } as SessionStudent,
+    } as AuthResponse;
   } catch (error) {
     console.log("ERROR", "/users/login", error);
   }
