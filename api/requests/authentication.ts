@@ -43,7 +43,7 @@ export default async function authenticateUser(
         currentExperience: res.experiencePoints,
         name: res.name,
         patent: res.currentPatent,
-        nextPatentExperience: 10000,
+        nextPatentExperience: 100,
         schollYear: "mock",
       } as SessionStudent,
     } as AuthResponse;
