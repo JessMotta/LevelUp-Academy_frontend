@@ -7,7 +7,10 @@ import { useSessionContext } from "@/providers/AuthProvider";
 // TODO: ACERTAR OS ENDPOINTS
 export default function useStudentSubjects() {
   const { user } = useSessionContext();
-  const req = useAPIRequest("GET", `/student/classrooms/${user?.id ?? ""}`);
+  const req = useAPIRequest(
+    "GET",
+    `/student/classrooms/${user?.id.toString() ?? ""}`
+  );
 
   // async function submit() {
   //   const res: SubjectReport[] = await req.submit();

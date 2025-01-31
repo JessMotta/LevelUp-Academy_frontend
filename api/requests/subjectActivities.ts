@@ -2,12 +2,14 @@ import { Activity } from "@/types/types";
 import useAPIRequest from "../api";
 import { useState } from "react";
 import { ACTIVITIES_MOCK } from "@/__mocks__/activities";
+import { useSessionContext } from "@/providers/AuthProvider";
 
 // TODO: ACERTAR OS ENDPOINTS
 export default function useSubjectActivities(subjectId: string) {
+  const { user } = useSessionContext();
   const req = useAPIRequest(
     "GET",
-    `/student/classroom/${subjectId}/activities`
+    `/student/${user?.id.toString()}/classroom/${subjectId.toString()}/activities`
   );
 
   // async function submit() {

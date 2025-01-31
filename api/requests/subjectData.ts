@@ -5,7 +5,10 @@ import { useState } from "react";
 
 // TODO: ACERTAR OS ENDPOINTS
 export default function useSubjectData(subjectId: string) {
-  const req = useAPIRequest("GET", `/student/classroom/${subjectId}`);
+  const req = useAPIRequest(
+    "GET",
+    `/student/classroom/${subjectId.toString()}`
+  );
 
   // async function submit() {
   //   const res: SubjectReport[] = await req.submit();
