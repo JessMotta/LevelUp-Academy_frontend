@@ -29,12 +29,13 @@ const CardUser = () => {
   if (!student) return <></>;
 
   return (
+    <div className="w-full mx-auto md:w-3/4">
     <div
       className={`
-            bg-primary rounded-[12px] w-[300px] h-auto mx-auto my-4
+            bg-primary rounded-[12px] h-auto m-3
             `}
     >
-      <div className="text-white p-4 flex items-center justify-start">
+      <div className="text-white p-3 flex items-center justify-start">
         <Image
           className="mr-4"
           src={ProfileImage}
@@ -64,6 +65,7 @@ const CardUser = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
