@@ -12,7 +12,6 @@ const CardUser = () => {
   if (!student) return <></>;
 
   return (
-<<<<<<< HEAD
     <div className="w-full mx-auto md:w-3/4">
     <div
       className={`
@@ -20,14 +19,6 @@ const CardUser = () => {
             `}
     >
       <div className="text-white p-3 flex items-center justify-start">
-=======
-    <div
-      className={`
-            bg-primary rounded-[12px] w-[300px] h-auto mx-auto my-4
-            `}
-    >
-      <div className="text-white p-4 flex items-center justify-start">
->>>>>>> 15df82e61209bc4a3a5ca0924591b01ec742c053
         <Image
           className="mr-4"
           src={ProfileImage}
@@ -49,18 +40,9 @@ const CardUser = () => {
               percent={student.currentExperience / student.nextPatentExperience}
             />
           </div>
-<<<<<<< HEAD
         </div>
       </div>
     </div>
-    </div>
-  );
-};
-
-=======
->>>>>>> 15df82e61209bc4a3a5ca0924591b01ec742c053
-        </div>
-      </div>
     </div>
   );
 };
