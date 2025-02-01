@@ -1,6 +1,6 @@
 // Autenticação
 export type SessionStudent = {
-  id: string;
+  id: number;
   name: string;
   schollYear: string;
   patent: string;
@@ -10,7 +10,7 @@ export type SessionStudent = {
 
 // Lista de resumos das matérias do aluno
 export interface SubjectReport {
-  id: string;
+  id: number;
   subject: string;
   teacher: string;
   average: number;
@@ -19,7 +19,7 @@ export interface SubjectReport {
 
 // Compõe dados de uma disciplina x aluno
 export type OwnedBenefits = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   purchasedAt: string;
@@ -39,7 +39,7 @@ export type SubjectData = {
 
 // Atividade (aluno x atividade)
 export type Activity = {
-  id: string;
+  id: number;
   type: string;
   group: boolean;
   value: number;
@@ -52,7 +52,7 @@ export type Activity = {
 export type TransactionMode = "add" | "sub";
 
 export type Transaction = {
-  id: string;
+  id: number;
   titulo: string;
   descricao: string;
   amount: number;
