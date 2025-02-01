@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        "xxs": "10px"
+      },
       colors: {
         primary: "var(--color-primary)",
         "green-1": "var(--color-green-1)",
