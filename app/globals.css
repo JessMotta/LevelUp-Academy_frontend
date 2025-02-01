@@ -27,3 +27,6 @@
 
     font-family: 'Inter', sans-serif;
 }
+.custom-svg {
+    filter: brightness(0) saturate(100%) invert(18%) sepia(20%) saturate(1633%) hue-rotate(134deg) brightness(92%) contrast(87%);
+}

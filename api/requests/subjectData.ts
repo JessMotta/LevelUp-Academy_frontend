@@ -12,7 +12,6 @@ export default function useSubjectData(subjectId: string) {
 
   //   return res;
   // }
-
   // TODO: remover mock
   const [loading, setLoading] = useState<boolean>(false);
   async function submitMock() {
