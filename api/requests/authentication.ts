@@ -7,8 +7,11 @@ type APIResponse = {
   id: number;
   name: string;
   email: string;
-  experiencePoints: number;
+  grade: string;
   currentPatent: string;
+  experiencePoints: number;
+  nextPatentExperience: number;
+  classrooms: [];
 };
 
 export default async function authenticateUser(
@@ -35,6 +38,8 @@ export default async function authenticateUser(
       throw new Error();
     }
 
+    console.log(res);
+
     return {
       token: "mockToken",
       expireAt: addDays(new Date(), 2).toISOString(),
@@ -43,8 +48,8 @@ export default async function authenticateUser(
         currentExperience: res.experiencePoints,
         name: res.name,
         patent: res.currentPatent,
-        nextPatentExperience: 100,
-        schollYear: "mock",
+        nextPatentExperience: res.nextPatentExperience,
+        schollYear: res.grade,
       } as SessionStudent,
     } as AuthResponse;
   } catch (error) {
