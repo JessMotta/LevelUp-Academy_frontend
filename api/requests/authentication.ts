@@ -11,7 +11,13 @@ type APIResponse = {
   currentPatent: string;
   experiencePoints: number;
   nextPatentExperience: number;
-  classrooms: [];
+  classrooms: APIClassroom[];
+};
+
+type APIClassroom = {
+  name: string;
+  teacherName: string;
+  id: number;
 };
 
 export default async function authenticateUser(
@@ -32,13 +38,9 @@ export default async function authenticateUser(
       requestParams
     ).then((res) => res.json());
 
-    console.log(res);
-
     if (!res) {
       throw new Error();
     }
-
-    console.log(res);
 
     return {
       token: "mockToken",
@@ -50,6 +52,7 @@ export default async function authenticateUser(
         patent: res.currentPatent,
         nextPatentExperience: res.nextPatentExperience,
         schollYear: res.grade,
+        subjects: res.classrooms,
       } as SessionStudent,
     } as AuthResponse;
   } catch (error) {
