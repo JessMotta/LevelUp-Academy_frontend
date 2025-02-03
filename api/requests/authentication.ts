@@ -7,8 +7,17 @@ type APIResponse = {
   id: number;
   name: string;
   email: string;
-  experiencePoints: number;
+  grade: string;
   currentPatent: string;
+  experiencePoints: number;
+  nextPatentExperience: number;
+  classrooms: APIClassroom[];
+};
+
+type APIClassroom = {
+  name: string;
+  teacherName: string;
+  id: number;
 };
 
 export default async function authenticateUser(
@@ -29,8 +38,6 @@ export default async function authenticateUser(
       requestParams
     ).then((res) => res.json());
 
-    console.log(res);
-
     if (!res) {
       throw new Error();
     }
@@ -43,8 +50,9 @@ export default async function authenticateUser(
         currentExperience: res.experiencePoints,
         name: res.name,
         patent: res.currentPatent,
-        nextPatentExperience: 100,
-        schollYear: "mock",
+        nextPatentExperience: res.nextPatentExperience,
+        schollYear: res.grade,
+        subjects: res.classrooms,
       } as SessionStudent,
     } as AuthResponse;
   } catch (error) {

@@ -5,7 +5,7 @@ import { TRANSACTIONS_MOCK } from "@/__mocks__/transactions";
 import { useSessionContext } from "@/providers/AuthProvider";
 
 // NEXT STEPS: desenvolver a Entidade de Transaction para remover o mock
-export default function useStudentSubjectTransaction(subjectId: number) {
+export default function useStudentSubjectTransaction(subjectId: string) {
   const { user } = useSessionContext();
   const req = useAPIRequest(
     "GET",

@@ -6,15 +6,48 @@ export type SessionStudent = {
   patent: string;
   currentExperience: number;
   nextPatentExperience: number;
+  subjects: APIClassroom[];
+};
+
+export type APIClassroom = {
+  name: string;
+  teacherName: string;
+  id: number;
+  activities: APIActivity[];
+};
+
+export type APIActivity = {
+  completed: boolean;
+  id: number;
+  inGroup: false;
+  name: string;
+  prestigeValue: number;
+  studentsPerGroup?: number;
+};
+
+export type UserSubject = {
+  name: string;
+  id: number;
 };
 
 // Lista de resumos das matérias do aluno
-export interface SubjectReport {
-  id: number;
+export interface SubjectResume {
+  id: string;
   subject: string;
   teacher: string;
-  average: number;
-  attendency: number;
+}
+
+export interface SubjectFullData {
+  id: string;
+  subject: string;
+  teacher: string;
+  prestige: {
+    pointsAmount: number;
+    ownedBenefits: OwnedBenefits[];
+  };
+  dayOfWeek: string;
+  timeSpot: number;
+  activities: Activity[];
 }
 
 // Compõe dados de uma disciplina x aluno

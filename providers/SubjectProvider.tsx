@@ -1,42 +1,30 @@
 "use client";
 import useStudentSubjectTransaction from "@/api/requests/studentSubjectTransaction";
-import useSubjectActivities from "@/api/requests/subjectActivities";
-import useSubjectData from "@/api/requests/subjectData";
-import { Activity, OwnedBenefits, Transaction } from "@/types/types";
+import { APIActivity, useSubjectData } from "@/api/requests/subjectData";
+import { SubjectFullData, Transaction } from "@/types/types";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface SubjectContext {
   subjectId: string | undefined;
-  subject: string | undefined;
-  teacher: string | undefined;
-  pointsAmount: number;
-  ownedBenefits: OwnedBenefits[];
+  subjectData: SubjectFullData | undefined;
   loading: boolean;
   transactions: {
     history: Transaction[];
     loading: boolean;
   };
-  activities: {
-    list: Activity[];
-    loading: boolean;
-  };
+  activities: APIActivity[];
 }
 
 const DEFAULT_VALUES: SubjectContext = {
   subjectId: undefined,
-  subject: undefined,
-  teacher: undefined,
-  pointsAmount: 0,
-  ownedBenefits: [],
   loading: false,
+  subjectData: undefined,
   transactions: {
     history: [],
     loading: false,
   },
-  activities: {
-    list: [],
-    loading: false,
-  },
+  activities: [],
 };
 
 const SubjectContext = createContext<SubjectContext>(DEFAULT_VALUES);
@@ -58,45 +46,37 @@ export const SubjectProvider = ({
   children: React.ReactNode;
   subjectId: string;
 }) => {
-  const [currentSubject, setCurrentSubject] = useState<string | undefined>(
-    DEFAULT_VALUES.subject
-  );
-  const [teacher, setTeacher] = useState<string | undefined>(
-    DEFAULT_VALUES.teacher
-  );
-  const [pointsAmount, setPointsAmount] = useState<number>(
-    DEFAULT_VALUES.pointsAmount
-  );
-  const [ownedBenefits, setOwnedBenefits] = useState<OwnedBenefits[]>(
-    DEFAULT_VALUES.ownedBenefits
+  const [subjectData, setSubjectData] = useState<SubjectFullData | undefined>(
+    undefined
   );
   const [transactionHistory, setTransactionHistory] = useState<Transaction[]>(
     DEFAULT_VALUES.transactions.history
   );
-  const [loadingActivities, setLoadingActivities] = useState<boolean>(
-    DEFAULT_VALUES.activities.loading
-  );
-  const [activities, setActivities] = useState<Activity[]>(
-    DEFAULT_VALUES.activities.list
+  const [activities, setActivities] = useState<APIActivity[]>(
+    DEFAULT_VALUES.activities
   );
 
   useEffect(() => {
-    /**
-     * REQUEST
-     * Fazer uma request aqui para pegar as informações de prestigio e beneficios do aluno
-     */
+    // dados da disciplina
     requestSubjectData();
+
+    // MOCKED: dados das transações (próximos passos)
     requestTransactions();
-    requestActivities();
   }, [subjectId]);
+
+  const router = useRouter();
 
   const currSubjectRequest = useSubjectData(subjectId);
   async function requestSubjectData() {
     const data = await currSubjectRequest.submit();
-    setCurrentSubject(data.subject);
-    setTeacher(data.teacher);
-    setPointsAmount(data.prestige.pointsAmount);
-    setOwnedBenefits(data.prestige.ownedBenefits);
+    console.log(data);
+    if (data) {
+      setSubjectData(data);
+      setActivities(data.activities);
+    } else {
+      alert("Não foi possível buscar informações desta disciplina");
+      router.push("/aluno");
+    }
   }
 
   // NEXT STEPS: desenvolver a Entidade de Transaction para remover o mock
@@ -107,27 +87,15 @@ export const SubjectProvider = ({
     setTransactionHistory(data);
   }
 
-  const currSubjectActivities = useSubjectActivities(subjectId);
-  async function requestActivities() {
-    const data = await currSubjectActivities.submit();
-    setActivities(data);
-  }
-
   const value = {
     subjectId,
-    subject: currentSubject,
-    teacher,
-    pointsAmount,
-    ownedBenefits,
     loading: currSubjectRequest.loading,
+    subjectData,
     transactions: {
       history: transactionHistory,
       loading: currSubjectTransactionsRequest.loading,
     },
-    activities: {
-      list: activities,
-      loading: loadingActivities,
-    },
+    activities,
   };
 
   return (
