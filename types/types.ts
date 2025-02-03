@@ -47,13 +47,7 @@ export interface SubjectFullData {
   };
   dayOfWeek: string;
   timeSpot: number;
-  activities: [
-    {
-      name: string;
-      description: string;
-      prestigeValue: number;
-    }
-  ];
+  activities: Activity[];
 }
 
 // Compõe dados de uma disciplina x aluno
