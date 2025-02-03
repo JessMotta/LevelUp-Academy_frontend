@@ -81,6 +81,12 @@ export type Activity = {
   experience?: number;
 };
 
+export type ActivityData = {
+  subjectId: string;
+  complete: boolean;
+  value: number;
+}
+
 // próximos passos: remover o mock de transactions
 export type TransactionMode = "add" | "sub";
 

@@ -20,6 +20,7 @@ export function useSubjectData(subjectId: string) {
   async function submit() {
     const res: SubjectDataApiReturn = await req.submit();
 
+
     if (!res) {
       return undefined;
     }
