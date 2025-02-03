@@ -21,8 +21,8 @@ type APIClassroom = {
 };
 
 export default async function authenticateUser(
-  username: string,
-  password: string
+  username?: string,
+  password?: string
 ) {
   const requestParams = {
     method: "GET",

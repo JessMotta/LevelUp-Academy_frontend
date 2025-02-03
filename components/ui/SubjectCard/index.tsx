@@ -49,7 +49,7 @@ function SubjectCard({ subjectId, subjectData }: DisciplinaCardProps) {
                 className="absolute font-normal text-3xl bottom-[15px]"
                 style={{ color: "var(--color-yellow)" }}
               >
-                98
+                ?
               </p>
             </div>
           </div>

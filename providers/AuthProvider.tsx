@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import { useRouter } from "next/navigation";
 import storage from "@/services/storage";
@@ -53,7 +53,11 @@ export const SessionProvider = ({
   const router = useRouter();
   const [classrooms, setClassrooms] = useState<APIClassroom[]>([]);
 
-  const login = async (username: string, password: string) => {
+  useEffect(() => {
+    login();
+  }, []);
+
+  const login = async (username?: string, password?: string) => {
     setLoading(true);
     const auth = await authenticateUser(username, password);
     if (!auth) return;
