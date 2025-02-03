@@ -1,26 +1,60 @@
 import { AuthResponse } from "@/types/auth";
-import { MOCK_AUTH } from "@/__mocks__/auth";
-// import { API_DOMAIN } from "@/config/constants/domain";
+import { API_DOMAIN } from "@/config/constants/domain";
+import { addDays } from "date-fns";
+import { SessionStudent } from "@/types/types";
 
-// TODO: ACERTAR OS ENDPOINTS
-export default function authenticateUser(username: string, password: string) {
+type APIResponse = {
+  id: number;
+  name: string;
+  email: string;
+  grade: string;
+  currentPatent: string;
+  experiencePoints: number;
+  nextPatentExperience: number;
+  classrooms: APIClassroom[];
+};
+
+type APIClassroom = {
+  name: string;
+  teacherName: string;
+  id: number;
+};
+
+export default async function authenticateUser(
+  username?: string,
+  password?: string
+) {
   const requestParams = {
-    method: "POST",
-    body: JSON.stringify({
-      username: username.toLowerCase(),
-      password: password.toLowerCase(),
-    }),
+    method: "GET",
+    // body: JSON.stringify({
+    //   username: username.toLowerCase(),
+    //   password: password.toLowerCase(),
+    // }),
   };
 
   try {
-    // const res = fetch(`${API_DOMAIN}/users/login`, requestParams).then(
-    //   (res) => res.json()
-    // );
+    const res: APIResponse = await fetch(
+      `${API_DOMAIN}/student/1`,
+      requestParams
+    ).then((res) => res.json());
 
-    // return res;
+    if (!res) {
+      throw new Error();
+    }
 
-    // TODO: remover mock
-    return MOCK_AUTH as AuthResponse;
+    return {
+      token: "mockToken",
+      expireAt: addDays(new Date(), 2).toISOString(),
+      user: {
+        id: res.id,
+        currentExperience: res.experiencePoints,
+        name: res.name,
+        patent: res.currentPatent,
+        nextPatentExperience: res.nextPatentExperience,
+        schollYear: res.grade,
+        subjects: res.classrooms,
+      } as SessionStudent,
+    } as AuthResponse;
   } catch (error) {
     console.log("ERROR", "/users/login", error);
   }

@@ -1,7 +1,7 @@
 import { Activity } from "@/types/types";
 
 const ACTIVITY_1: Activity = {
-  id: "1",
+  id: 1,
   type: "Questionário",
   group: false,
   studentQnt: 1,
@@ -9,7 +9,7 @@ const ACTIVITY_1: Activity = {
   value: 20,
 };
 const ACTIVITY_2: Activity = {
-  id: "2",
+  id: 2,
   type: "Estudo dirigido",
   group: true,
   studentQnt: 2,
@@ -17,7 +17,7 @@ const ACTIVITY_2: Activity = {
   value: 30,
 };
 const ACTIVITY_3: Activity = {
-  id: "3",
+  id: 3,
   type: "Apresentação",
   group: true,
   studentQnt: 4,
@@ -25,7 +25,7 @@ const ACTIVITY_3: Activity = {
   value: 40,
 };
 const ACTIVITY_4: Activity = {
-  id: "4",
+  id: 4,
   type: "Quiz",
   group: false,
   studentQnt: 1,

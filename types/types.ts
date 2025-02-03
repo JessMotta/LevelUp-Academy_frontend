@@ -1,25 +1,58 @@
 // Autenticação
 export type SessionStudent = {
-  id: string;
+  id: number;
   name: string;
   schollYear: string;
   patent: string;
   currentExperience: number;
   nextPatentExperience: number;
+  subjects: APIClassroom[];
+};
+
+export type APIClassroom = {
+  name: string;
+  teacherName: string;
+  id: number;
+  activities: APIActivity[];
+};
+
+export type APIActivity = {
+  completed: boolean;
+  id: number;
+  inGroup: false;
+  name: string;
+  prestigeValue: number;
+  studentsPerGroup?: number;
+};
+
+export type UserSubject = {
+  name: string;
+  id: number;
 };
 
 // Lista de resumos das matérias do aluno
-export interface SubjectReport {
+export interface SubjectResume {
   id: string;
   subject: string;
   teacher: string;
-  average: number;
-  attendency: number;
+}
+
+export interface SubjectFullData {
+  id: string;
+  subject: string;
+  teacherName: string;
+  prestige: {
+    pointsAmount: number;
+    ownedBenefits: OwnedBenefits[];
+  };
+  dayOfWeek: string;
+  timeSpot: number;
+  activities: Activity[];
 }
 
 // Compõe dados de uma disciplina x aluno
 export type OwnedBenefits = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   purchasedAt: string;
@@ -39,7 +72,7 @@ export type SubjectData = {
 
 // Atividade (aluno x atividade)
 export type Activity = {
-  id: string;
+  id: number;
   type: string;
   group: boolean;
   value: number;
@@ -58,7 +91,7 @@ export type ActivityData = {
 export type TransactionMode = "add" | "sub";
 
 export type Transaction = {
-  id: string;
+  id: number;
   titulo: string;
   descricao: string;
   amount: number;

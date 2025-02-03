@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { API_DOMAIN } from "@/config/constants/domain";
@@ -19,7 +20,7 @@ export default function useAPIRequest(
 
     const requestParams = {
       method: method,
-      body: body ? JSON.stringify(body) : "",
+      body: method === "GET" ? undefined : body ? JSON.stringify(body) : "",
     };
 
     try {
