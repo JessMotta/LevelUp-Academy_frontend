@@ -40,7 +40,7 @@ export interface SubjectResume {
 export interface SubjectFullData {
   id: string;
   subject: string;
-  teacher: string;
+  teacherName: string;
   prestige: {
     pointsAmount: number;
     ownedBenefits: OwnedBenefits[];

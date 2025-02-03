@@ -1,9 +1,10 @@
 "use client";
 import useStudentSubjectTransaction from "@/api/requests/studentSubjectTransaction";
-import { APIActivity, useSubjectData } from "@/api/requests/subjectData";
-import { SubjectFullData, Transaction } from "@/types/types";
+import { useSubjectData } from "@/api/requests/subjectData";
+import { APIActivity, SubjectFullData, Transaction } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useSessionContext } from "./AuthProvider";
 
 interface SubjectContext {
   subjectId: string | undefined;
@@ -69,13 +70,21 @@ export const SubjectProvider = ({
   const currSubjectRequest = useSubjectData(subjectId);
   async function requestSubjectData() {
     const data = await currSubjectRequest.submit();
-    console.log(data);
     if (data) {
       setSubjectData(data);
-      setActivities(data.activities);
+      handleActivities();
     } else {
       alert("Não foi possível buscar informações desta disciplina");
       router.push("/aluno");
+    }
+  }
+
+  const { classrooms } = useSessionContext();
+  function handleActivities() {
+    const thisClassroom = classrooms.find((c) => c.id.toString() === subjectId);
+
+    if (thisClassroom) {
+      setActivities(thisClassroom?.activities);
     }
   }
 

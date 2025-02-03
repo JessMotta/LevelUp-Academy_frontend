@@ -39,7 +39,7 @@ export default function SubjectHeader() {
       <div className="flex flex-row justify-between items-center gap-2">
         <div>
           <p className="text-2xl text-bold mb-1.5">{subjectData.subject}</p>
-          <p>Prof. {subjectData.teacher}</p>
+          <p>Prof. {subjectData.teacherName}</p>
         </div>
         <button
           className="relative rounded-full bg-brand-900 p-1 w-16 h-16 flex justify-center items-center"
