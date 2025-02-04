@@ -1,3 +1,4 @@
+import ActivityDescription from "@/components/ui/ActivityDescription";
 import FeedbackActivity from "@/components/ui/FeebackActivity";
 //import { useActivityContext } from "@/providers/ActivityProvider";
 
@@ -13,6 +14,7 @@ export default function SubjectActivityTemplate({
 
   return (
     <div className="text-white">Página da atividade #{activityId}
+      <ActivityDescription/>
       <FeedbackActivity/>
     </div>
   )
