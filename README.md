@@ -55,5 +55,34 @@ LevelUp-Academy/
 ```
 
 ## Rotas
+| Rotas | Descrição
+| `/` | Página de login
+| `/aluno` | Página com salas do aluno
+| `/aluno/disciplina/{disciplinaId}` | Página da disciplina aberta
+| `/aluno/disciplina/{disciplinaId}/atividade/{atividadeId}}` | Página da atividade aberta
+
 
 ## Como executar
+
+### Preparando o back-end
+❗❗❗**ATENÇÃO**❗❗❗
+
+Antes de executar o front-end certifique-se de ter o projeto back-end rodando em sua máquina, para isso acesse o repositório do back-end [clicando aqui](https://github.com/JessMotta/LevelUp-Academy_backend) e siga o passo-a-passo para executar o projeto
+
+### Preparando o front-end
+1. Clone o repositório em sua máquina
+```bash
+git clone https://github.com/JessMotta/LevelUp-Academy_frontend.git
+```
+2. Acesse o diretório
+```bash
+cd LevelUp-Academy_frontend
+```
+3. Instale as dependências do projeto
+```bash
+npm install
+```
+4. Execute o projeto
+```bash
+npm run dev
+```
