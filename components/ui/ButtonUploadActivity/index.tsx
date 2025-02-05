@@ -21,7 +21,7 @@ export default function ButtonUploadActivity() {
     <div className="text-white">
       {/* se a resposta já foi enviada, mostrar mensagem */}
       {isUploaded ? (
-        <div className="w-full p-4 bg-green-12 text-green-10 rounded-lg mt-6">
+        <div className="w-full p-4 bg-green-12 text-green-10 rounded-lg mt-4">
           <p className="font-medium text-lg">A resposta do grupo foi enviada!</p>
           <p className="text-sm">Você pode remover e enviar outro arquivo dentro do prazo.</p>
           <button
@@ -35,7 +35,7 @@ export default function ButtonUploadActivity() {
           </button>
         </div>
       ) : (
-        <div className="w-full p-4 bg-green-12 text-green-10 rounded-lg mt-6">
+        <div className="w-full p-4 bg-green-12 text-green-10 rounded-lg mt-4">
           <p className="font-medium text-lg">Entregue sua resposta</p>
           <p className="text-sm">Pode ser feito o envio de .doc, .pdf ou foto legível:</p>
 
