@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { BsTrash3 } from "react-icons/bs";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 export default function ButtonUploadActivity() {
   const [fileName, setFileName] = useState("");
@@ -14,36 +16,37 @@ export default function ButtonUploadActivity() {
     }
   };
 
+
   return (
     <div className="text-white">
       {/* se a resposta já foi enviada, mostrar mensagem */}
       {isUploaded ? (
-        <div className="w-full p-4 bg-green-200 text-green-800 rounded-lg text-center mt-6">
-          <p className="font-bold">A resposta do grupo foi enviada!</p>
-          <p className="text-xs">Você pode remover e enviar outro arquivo dentro do prazo.</p>
+        <div className="w-full p-4 bg-green-12 text-green-10 rounded-lg mt-6">
+          <p className="font-medium text-lg">A resposta do grupo foi enviada!</p>
+          <p className="text-sm">Você pode remover e enviar outro arquivo dentro do prazo.</p>
           <button
-            className="w-full mt-2 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300"
+            className="w-full mt-2 cursor-pointer text-center text-sm border-dashed border-2 border-green-11 text-green-11 py-2 px-4 rounded-lg flex justify-center items-center"
             onClick={() => {
               setFileName("");
               setIsUploaded(false);
             }}
           >
-             🗑️ Apagar resposta enviada
+             Apagar resposta enviada <BsTrash3 className="ml-2 text-xl"/>
           </button>
         </div>
       ) : (
-        <div className="w-full p-4 bg-green-100 text-green-800 rounded-lg text-center mt-6">
-          <p className="font-bold">Entregue sua resposta</p>
-          <p className="text-xs">Pode ser feito o envio de .doc, .pdf ou foto legível:</p>
+        <div className="w-full p-4 bg-green-12 text-green-10 rounded-lg mt-6">
+          <p className="font-medium text-lg">Entregue sua resposta</p>
+          <p className="text-sm">Pode ser feito o envio de .doc, .pdf ou foto legível:</p>
 
           {/* botão de upload */}
-          <label className="block mt-2 cursor-pointer bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
-            📤 Fazer Upload
+          <label className="mt-2 cursor-pointer text-center text-sm border-dashed border-2 border-green-11 text-green-11 py-2 px-4 rounded-lg flex justify-center items-center">
+              Fazer upload <MdOutlineFileUpload className="ml-2 text-2xl" />
             <input type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" onChange={handleFileUpload} hidden />
           </label>
 
           {fileName && <p className="text-xs mt-2">Arquivo: {fileName}</p>}
-          <p className="text-xs mt-4">Apenas um do grupo precisa fazer o envio</p>
+          <p className="text-xs mt-4 text-center">Apenas um do grupo precisa fazer o envio</p>
         </div>
       )}
 
