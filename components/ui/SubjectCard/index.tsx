@@ -31,7 +31,7 @@ function SubjectCard({ subjectId, subjectData }: DisciplinaCardProps) {
                 Prof. {subjectData.teacherName}
               </h2>
               <div
-                className="h-0.5 w-[150%] md:w-[190%]"
+                className="h-0.5 w-[120%] md:w-[190%]"
                 style={{ background: "var(--color-green-7)" }}
               ></div>
             </div>
@@ -49,7 +49,7 @@ function SubjectCard({ subjectId, subjectData }: DisciplinaCardProps) {
                 className="absolute font-normal text-3xl bottom-[15px]"
                 style={{ color: "var(--color-yellow)" }}
               >
-                ?
+                60
               </p>
             </div>
           </div>
