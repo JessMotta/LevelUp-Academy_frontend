@@ -1,9 +1,17 @@
 "use client";
+import { useSubjectContext } from "@/providers/SubjectProvider";
 import { useState } from "react";
 import { BsTrash3 } from "react-icons/bs";
 import { MdOutlineFileUpload } from "react-icons/md";
 
-export default function ButtonUploadActivity() {
+interface ButtonUploadActivityProps {
+  activityId: string;
+}
+
+export default function ButtonUploadActivity({activityId}: ButtonUploadActivityProps) {
+  const {activities} = useSubjectContext();
+  const activity = activities.find((activity) => activity.id === parseInt(activityId));
+
   const [fileName, setFileName] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
 
@@ -18,6 +26,9 @@ export default function ButtonUploadActivity() {
 
 
   return (
+    <>
+    {/*  Essa condicional foi colocada apenas por não ter o parâmetro de prazo no backend para exibir ou não se a atividade não foi entregue */} 
+    {(activity?.completed === false && activityId !== "1")  ? ( 
     <div className="text-white">
       {/* se a resposta já foi enviada, mostrar mensagem */}
       {isUploaded ? (
@@ -50,5 +61,8 @@ export default function ButtonUploadActivity() {
         </div>
       )}
     </div>
+    ): <></>}
+    </>
+    
   );
 }

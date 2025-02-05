@@ -19,7 +19,7 @@ export default function SubjectActivityTemplate({
     <div className="text-white">
       <ActivityDescription activityId={activityId}/>
       <ButtonPDF />
-      <ButtonUploadActivity/>
+      <ButtonUploadActivity activityId={activityId}/>
       <FeedbackActivity activityId={activityId}/>
       <Button/>
     </div>

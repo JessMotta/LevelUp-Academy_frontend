@@ -6,7 +6,6 @@ import { useSubjectContext } from "@/providers/SubjectProvider";
 import { APIActivity } from "@/types/types";
 
 function ActivityCard({ activity }: { activity: APIActivity }) {
-  console.log('activity', activity)
   const member = activity.inGroup
     ? activity.studentsPerGroup === 2
       ? "Dupla"

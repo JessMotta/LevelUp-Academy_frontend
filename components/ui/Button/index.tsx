@@ -8,7 +8,7 @@ export default function Button(){
         <>
             {/* botão de voltar */}
             <button
-                    className="w-full bg-green-5 text-dark text-base py-2 px-4 rounded-lg hover:bg-gray-800 hover:text-white transition duration-300 mt-4"
+                    className="w-full bg-green-5 text-dark text-base py-2 px-4 rounded-lg mt-4"
                     onClick={() => router.back()}
                 >
                     Voltar

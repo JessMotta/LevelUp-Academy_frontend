@@ -6,9 +6,10 @@ interface ActivityDescriptionProps {
 }
 
 export default function ActivityDescription ({activityId}: ActivityDescriptionProps){
-  const {activities} = useSubjectContext();
+  const {activities, subjectData} = useSubjectContext();
   const activity = activities.find(activity => activity.id === parseInt(activityId));
-  console.log(activity);
+  const activityDescription = subjectData?.activities.find(activity => activity.id === parseInt(activityId));
+
   const member = activity?.inGroup
     ? activity.studentsPerGroup === 2
       ? "Dupla"
@@ -32,7 +33,7 @@ export default function ActivityDescription ({activityId}: ActivityDescriptionPr
                 }
                 
             </div>
-            <p className="text-sm mt-5">{activity?.description} </p>
+            <p className="text-sm mt-5">{activityDescription?.description} </p>
         </div>
     )
 
