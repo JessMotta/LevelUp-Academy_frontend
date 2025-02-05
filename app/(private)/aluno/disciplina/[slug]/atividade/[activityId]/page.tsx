@@ -4,7 +4,7 @@ import SubjectActivityTemplate from "@/components/page-templates/student/activit
 import { useRouter } from "next/navigation";
 import { Usable, use } from "react";
 
-type Params = { slug: string; activityId: string };
+type Params = { slug: string; activityId: string;};
 
 export default function ActivityPage({ params }: { params: Params }) {
   const paramsContent = use(
@@ -12,6 +12,7 @@ export default function ActivityPage({ params }: { params: Params }) {
   ) as unknown as Params;
 
   const router = useRouter();
+
 
   if (!paramsContent.slug || !paramsContent.activityId) {
     router.push("/aluno");

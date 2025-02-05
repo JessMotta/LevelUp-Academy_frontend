@@ -8,10 +8,10 @@ interface StudentSubjectTemplateProps {
 }
 
 export default function StudentSubjectTemplate({}: StudentSubjectTemplateProps) {
-  const { activities } = useSubjectContext();
+  const { activities, loading } = useSubjectContext();
   return (
     <div className="w-full flex flex-col gap-4">
-      <ActivityList list={activities.list} loading={activities.loading} />
+      <ActivityList list={activities} loading={loading} />
     </div>
   );
 }

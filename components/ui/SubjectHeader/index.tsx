@@ -2,6 +2,9 @@ import { ReactNode } from "react";
 import { useSubjectContext } from "@/providers/SubjectProvider";
 import { useRouter } from "next/navigation";
 
+import Image from "next/image";
+import star from "@/public/assets/star.svg";
+
 const Box = ({ children }: { children: ReactNode }) => {
   return (
     <div className="rounded-lg bg-brand-800 text-white py-2.5 px-3.5">
@@ -11,8 +14,7 @@ const Box = ({ children }: { children: ReactNode }) => {
 };
 
 export default function SubjectHeader() {
-  const { loading, subject, subjectId, teacher, pointsAmount } =
-    useSubjectContext();
+  const { loading, subjectData } = useSubjectContext();
 
   const router = useRouter();
 
@@ -24,7 +26,7 @@ export default function SubjectHeader() {
     );
   }
 
-  if (!subject || !teacher) {
+  if (!subjectData) {
     return (
       <Box>
         <p className="text-white">Error...</p>
@@ -36,16 +38,25 @@ export default function SubjectHeader() {
     <Box>
       <div className="flex flex-row justify-between items-center gap-2">
         <div>
-          <p className="text-2xl text-bold mb-1.5">{subject}</p>
-          <p>Prof. {teacher}</p>
+          <p className="text-2xl text-bold mb-1.5">{subjectData.subject}</p>
+          <p>Prof. {subjectData.teacherName}</p>
         </div>
         <button
-          className="rounded-full bg-brand-900 p-1 w-16 h-16 flex justify-center items-center"
+          className="relative rounded-full bg-brand-900 p-1 w-16 h-16 flex justify-center items-center"
+          style={{ color: "var(--color-yellow)" }}
           onClick={() =>
-            router.push(`/aluno/disciplina/${subjectId}/beneficios`)
+            router.push(
+              `/aluno/disciplina/${subjectData.id.toString()}/beneficios`
+            )
           }
         >
-          {pointsAmount}
+          <Image
+            src={star}
+            alt="Star"
+            width={30}
+            className="absolute left-[-4px] top-[-4px] "
+          />
+          ? {/* Esse dado não está sendo retornado em nenhum endpoint */}
         </button>
       </div>
     </Box>

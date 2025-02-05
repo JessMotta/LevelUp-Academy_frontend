@@ -1,16 +1,20 @@
 type ProgressBarProps = {
-    percent: number;
-}
-const ProgressBar = (percent:ProgressBarProps) => {
-    const progress = percent.percent;
+  currPoints: number;
+  nextLevelPoints: number;
+};
 
-    return(
-        <div className="w-[205px]">
-            <div className="w-100 h-[3px] mt-1 rounded-[3px] bg-grey">
-                <div className="h-[3px] rounded-[3px] bg-green-12" style={{width: `${progress}%`}}></div>
-            </div>
-        </div>
-    );
-}
+const ProgressBar = ({ currPoints, nextLevelPoints }: ProgressBarProps) => {
+  const width = (currPoints / nextLevelPoints) * 100;
+  return (
+    <div className="w-full">
+      <div className="w-full h-[4px] mt-1 rounded-[3px] bg-grey">
+        <div
+          className={`h-[4px] rounded-[3px] bg-green-12`}
+          style={{ width: `${width}%` }}
+        ></div>
+      </div>
+    </div>
+  );
+};
 
 export default ProgressBar;

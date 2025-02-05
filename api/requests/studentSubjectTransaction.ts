@@ -2,12 +2,14 @@ import { Transaction } from "@/types/types";
 import useAPIRequest from "../api";
 import { useState } from "react";
 import { TRANSACTIONS_MOCK } from "@/__mocks__/transactions";
+import { useSessionContext } from "@/providers/AuthProvider";
 
 // NEXT STEPS: desenvolver a Entidade de Transaction para remover o mock
 export default function useStudentSubjectTransaction(subjectId: string) {
+  const { user } = useSessionContext();
   const req = useAPIRequest(
     "GET",
-    `/student/classroom/${subjectId}/transactions`
+    `/student/${user?.id.toString()}/classroom/${subjectId.toString()}/transactions`
   );
 
   // async function submit() {
