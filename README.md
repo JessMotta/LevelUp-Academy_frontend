@@ -55,7 +55,8 @@ LevelUp-Academy/
 ```
 
 ## Rotas
-| Rotas | Descrição
+| Caminhos | Descrição
+|-------| ---------
 | `/` | Página de login
 | `/aluno` | Página com salas do aluno
 | `/aluno/disciplina/{disciplinaId}` | Página da disciplina aberta
