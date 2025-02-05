@@ -1,4 +1,5 @@
 import ActivityDescription from "@/components/ui/ActivityDescription";
+import Button from "@/components/ui/Button";
 import { ButtonPDF } from "@/components/ui/ButtonPDF";
 import ButtonUploadActivity from "@/components/ui/ButtonUploadActivity";
 import FeedbackActivity from "@/components/ui/FeebackActivity";
@@ -20,6 +21,7 @@ export default function SubjectActivityTemplate({
       <ButtonPDF />
       <ButtonUploadActivity/>
       <FeedbackActivity/>
+      <Button/>
     </div>
   )
   

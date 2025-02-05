@@ -49,14 +49,6 @@ export default function ButtonUploadActivity() {
           <p className="text-xs mt-4 text-center">Apenas um do grupo precisa fazer o envio</p>
         </div>
       )}
-
-      {/* botão de voltar */}
-      <button
-        className="w-full bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 mt-4"
-        onClick={() => window.history.back()}
-      >
-        🔙 Voltar
-      </button>
     </div>
   );
 }
