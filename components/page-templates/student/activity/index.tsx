@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button";
 import { ButtonPDF } from "@/components/ui/ButtonPDF";
 import ButtonUploadActivity from "@/components/ui/ButtonUploadActivity";
 import FeedbackActivity from "@/components/ui/FeebackActivity";
-//import { useActivityContext } from "@/providers/ActivityProvider";
+
 
 interface SubjectActivityTemplateProps {
   activityId: string;
@@ -12,7 +12,7 @@ interface SubjectActivityTemplateProps {
 export default function SubjectActivityTemplate({
   activityId
 }: SubjectActivityTemplateProps) {
-  //const {complete} = useActivityContext();
+
 
 
   return (
