@@ -13,8 +13,8 @@ export default function SubjectActivityTemplate({
 
 
   return (
-    <div className="text-white">Página da atividade #{activityId}
-      <ActivityDescription/>
+    <div className="text-white">
+      <ActivityDescription activityId={activityId}/>
       <FeedbackActivity/>
     </div>
   )

@@ -5,7 +5,7 @@ import { ACTIVITY_DATA_MOCK } from "@/__mocks__/activityMainData";
 
 
 export default function useActivityData(subjectId: string, activityId: string){
-    const req = useAPIRequest("GET", `/student/classroom/${subjectId}/activities/${activityId}`);
+    const req = useAPIRequest("GET", `/classroom/${subjectId}/activity/${activityId}`);
    
 
     const [loading, setLoading] = useState<boolean>(false);
