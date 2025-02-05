@@ -1,4 +1,6 @@
+"use client";
 
+import { GrDocumentPdf } from "react-icons/gr";
 
 export function ButtonPDF () {
       // url do pdf de teste
@@ -13,14 +15,12 @@ export function ButtonPDF () {
   };
     return (
         <>  {/* botão pra acessar o pdf*/}
-            <div className="w-full p-0.1 bg-gray-800 rounded-lg text-center mt-6">
                 <button
                     onClick={handleOpenPdf}
-                    className="w-full text-center bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-300 block mt-4"
+                    className="w-full text-center bg-blue text-sm font-medium text-white py-3 px-6 rounded-xl flex justify-center items-center mt-4"
                 >
-                    📄 Acesse o PDF do exercício
+                    <GrDocumentPdf className="mr-2" /> Acesse o PDF do exercício
                 </button>
-            </div>        
         </>
     
     )
