@@ -30,3 +30,7 @@
 .custom-svg {
     filter: brightness(0) saturate(100%) invert(18%) sepia(20%) saturate(1633%) hue-rotate(134deg) brightness(92%) contrast(87%);
 }
+
+.dark-svg{
+    filter: brightness(0) saturate(100%) invert(8%) sepia(7%) saturate(7149%) hue-rotate(138deg) brightness(92%) contrast(97%);
+}

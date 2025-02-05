@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import starSvg from "@/public/assets/star.svg";
-import { IoLogoElectron } from "react-icons/io5";
 import { useSubjectContext } from "@/providers/SubjectProvider";
 
 interface FeedbackActivityProps {
@@ -46,10 +45,8 @@ export default function FeedbackActivity ({activityId}: FeedbackActivityProps) {
           />
         </div>
             </div>
-            <div>
-            <p className="text-sm flex">Aguarde a correção para receber pontos de experiência <IoLogoElectron/></p>
-            
-            </div>
+    
+            <p className="text-sm flex flex-row items-center">Aguarde a correção para receber pontos de experiência</p>
         </div>
         )}
          
