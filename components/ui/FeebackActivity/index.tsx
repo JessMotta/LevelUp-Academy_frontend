@@ -3,14 +3,21 @@ import Image from "next/image";
 import starSvg from "@/public/assets/star.svg";
 import { IoLogoElectron } from "react-icons/io5";
 import { useActivityContext } from "@/providers/ActivityProvider";
+import { useSubjectContext } from "@/providers/SubjectProvider";
+
+interface FeedbackActivityProps {
+    activityId: string;
+}
 
 
+export default function FeedbackActivity ({activityId}: FeedbackActivityProps) {
+    const {activities} = useSubjectContext();
+    const activity = activities.find(activity => activity.id === parseInt(activityId));
+    //const {complete, value} = useActivityContext();
 
-export default function FeedbackActivity () {
-    const {complete, value} = useActivityContext();
      return (
         <>
-        {complete === false ? (
+        {activity?.completed === false ? (
         // Feedback caso o grupo não tenha enviado a resposta
             <div className="bg-green-13 py-3 px-4 rounded-xl text-green-3">
                 <h2 className="font-medium text-[18px]">Seu grupo não enviou resposta</h2>
@@ -27,7 +34,7 @@ export default function FeedbackActivity () {
                     <p
             className="font-semibold text-[18px] ml-3"
           >
-            {value}
+            {activity?.prestigeValue}
           </p>
           <Image
             src={starSvg}

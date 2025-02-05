@@ -8,6 +8,7 @@ interface ActivityDescriptionProps {
 export default function ActivityDescription ({activityId}: ActivityDescriptionProps){
   const {activities} = useSubjectContext();
   const activity = activities.find(activity => activity.id === parseInt(activityId));
+  console.log(activity);
   const member = activity?.inGroup
     ? activity.studentsPerGroup === 2
       ? "Dupla"

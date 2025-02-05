@@ -5,6 +5,7 @@ import { useContext, createContext, useState, useEffect } from "react"
 interface ActivityContext {
     activityId: string | undefined;
     subjectId: string | undefined;
+    description: string;
     complete: boolean;
     value: number;
 }
@@ -12,6 +13,7 @@ interface ActivityContext {
 const DEFAULT_VALUES: ActivityContext = {
     activityId: undefined,
     subjectId: undefined,
+    description: "",
     complete: false,
     value: 0,
 }
@@ -41,6 +43,8 @@ export const ActivityProvider = ({
     
     const [value, setValue] = useState<number>(DEFAULT_VALUES.value);
 
+    const [description, setDescription] = useState<string>(DEFAULT_VALUES.description);
+
     useEffect(()=>{
         requestActivityData();
     }, [activityId])
@@ -50,11 +54,13 @@ export const ActivityProvider = ({
         const data = await currActivityRequest.submit();
         setComplete(data.complete);
         setValue(data.value);
+        setDescription(data.description);
         console.log('data', data)
     }
     const activityValue = {
         activityId,
         subjectId,
+        description,
         complete,
         value,
     }

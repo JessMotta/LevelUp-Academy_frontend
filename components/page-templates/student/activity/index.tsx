@@ -20,7 +20,7 @@ export default function SubjectActivityTemplate({
       <ActivityDescription activityId={activityId}/>
       <ButtonPDF />
       <ButtonUploadActivity/>
-      <FeedbackActivity/>
+      <FeedbackActivity activityId={activityId}/>
       <Button/>
     </div>
   )
