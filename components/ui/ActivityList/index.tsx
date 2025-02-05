@@ -27,7 +27,8 @@ function ActivityCard({ activity }: { activity: APIActivity }) {
       className={c(
         "flex flex-col items-center justify-center",
         "relative px-2 rounded-md",
-        "min-w-40 min-h-40",
+        "min-w-32 min-h-32",
+        "sm:min-w-40 min-h-40",
         {
           "bg-brand-50 text-dark": !activity.completed,
           "bg-brand-300 text-dark": activity.completed,
@@ -65,7 +66,7 @@ export default function ActivityList({
       </div>
       {loading && <>Loading...</>}
       {!loading && list.length >= 1 && (
-        <div className="flex flex-row flex-wrap md:justify-between gap-3 justify-center">
+        <div className="flex flex-row flex-wrap justify-between gap-3">
           {list.map((el) => (
             <ActivityCard activity={el} key={el.name} />
           ))}
