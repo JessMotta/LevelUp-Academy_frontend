@@ -17,8 +17,7 @@ export default function PurchasedBenefits() {
         <p className="font-extrabold text-lg">{prestige.ownedBenefits.length}</p>
       </div>
       <p>
-        Troque seus pontos de prestígio por benefícios e privilégios nesta
-        disciplina
+      Aqui estão os benefícios que você adquiriu e ainda não usou
       </p>
       <button
         className="underline underline-offset-2 text-end self-end"
