@@ -35,7 +35,6 @@ export function Navbar({ menuItems }: NavbarProps) {
 
   return (
     <div className="relative w-full z-20 p-2.5">
-      {/* Overlay escuro para o fundo */}
       {isMenuOpen && (
         <div
           onClick={() => setIsMenuOpen(false)}
@@ -63,7 +62,6 @@ export function Navbar({ menuItems }: NavbarProps) {
           </button>
         ) : (
           <div className="flex gap-4">
-            {/* Exibindo todos os itens no modo desktop */}
             <button
               key="/minhas-disciplinas"
               className="text-white hover:text-gray-300"
@@ -92,7 +90,6 @@ export function Navbar({ menuItems }: NavbarProps) {
             >
               Configurações
             </button>
-            {/* Substituindo "Configurações" por "Logout" no desktop */}
             <button
               key="/logout"
               className="rounded-md text-black p-2 font-mono bg-slate-100"
@@ -106,12 +103,9 @@ export function Navbar({ menuItems }: NavbarProps) {
         )}
       </nav>
 
-      {/* Menu de navegação em dispositivos móveis */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-20 flex justify-end bg-transparent mt-2.5 mb-2.5">
-          {/* Menu lateral, ocupando 80% da tela, com bordas arredondadas em todos os lados */}
           <div className="w-4/5 h-full bg-brand-900 rounded-lg shadow-lg p-6 flex flex-col items-center transition-all duration-300 mr-4">
-            {/* Botão de fechar */}
             <button
               className="absolute top-4 right-4 text-white"
               onClick={() => setIsMenuOpen(false)}
@@ -120,7 +114,6 @@ export function Navbar({ menuItems }: NavbarProps) {
             </button>
 
             <div className="flex flex-col items-center flex-grow justify-center">
-              {/* Exibindo a foto de perfil e nome do aluno */}
               {user ? (
                 <>
                   <Image
@@ -138,7 +131,6 @@ export function Navbar({ menuItems }: NavbarProps) {
               )}
               <hr className="w-full border-gray-600 mb-4" />
 
-              {/* Campos adicionais com ícones */}
               <div className="w-full flex flex-col gap-2">
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
@@ -168,7 +160,6 @@ export function Navbar({ menuItems }: NavbarProps) {
                   <IoSettings className="text-white" />
                   Configurações
                 </button>
-                {/* Apenas mostrar o Logout no desktop */}
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
                   onClick={() => {
@@ -181,7 +172,6 @@ export function Navbar({ menuItems }: NavbarProps) {
               </div>
             </div>
 
-            {/* Logo no canto inferior centralizado */}
             <div className="absolute bottom-4 left-1/2 transform translate-x-1">
               <Image
                 src={LogoIcon}
