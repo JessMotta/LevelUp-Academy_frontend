@@ -61,6 +61,7 @@ LevelUp-Academy/
 | `/aluno` | Página com salas do aluno
 | `/aluno/disciplina/{disciplinaId}` | Página da disciplina aberta
 | `/aluno/disciplina/{disciplinaId}/atividade/{atividadeId}}` | Página da atividade aberta
+| `/aluno/disciplina/{beneficiosId}/beneficions/loja` | Página da loja de benefícios
 
 
 ## Como executar
