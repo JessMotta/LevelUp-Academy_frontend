@@ -56,7 +56,8 @@ export default function SubjectHeader() {
             width={30}
             className="absolute left-[-4px] top-[-4px] "
           />
-          ? {/* Esse dado não está sendo retornado em nenhum endpoint */}
+          60
+          {/* Esse dado não está sendo retornado em nenhum endpoint */}
         </button>
       </div>
     </Box>
