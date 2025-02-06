@@ -18,7 +18,7 @@ export const TRANSACTIONS_MOCK: Transaction[] = [
   {
     id: 3,
     titulo: "Compra de benefício",
-    descricao: "Adquiriu beneficio pipipin pop opoop",
+    descricao: "Adquiriu beneficio de eliminação de questão",
     amount: 50,
     mode: "sub",
   },
