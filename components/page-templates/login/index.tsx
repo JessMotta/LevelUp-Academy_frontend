@@ -7,8 +7,8 @@ import logo from "@/public/assets/logo.svg";
 import { useSessionContext } from "@/providers/AuthProvider";
 
 export const Login = () => {
-  const [username, setUsername] = useState<string | undefined>(undefined);
-  const [password, setPassword] = useState<string | undefined>(undefined);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const { login } = useSessionContext();
 
@@ -101,6 +101,6 @@ export const Login = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>
+  );
 };

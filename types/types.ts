@@ -19,6 +19,7 @@ export type APIClassroom = {
 export type APIActivity = {
   completed: boolean;
   id: number;
+  description: string;
   inGroup: false;
   name: string;
   prestigeValue: number;
@@ -73,6 +74,7 @@ export type SubjectData = {
 // Atividade (aluno x atividade)
 export type Activity = {
   id: number;
+  description: string;
   type: string;
   group: boolean;
   value: number;
@@ -85,6 +87,7 @@ export type ActivityData = {
   subjectId: string;
   complete: boolean;
   value: number;
+  description: string;
 }
 
 // próximos passos: remover o mock de transactions
