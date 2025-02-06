@@ -4,7 +4,7 @@ import { JSX } from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5";
-import { IoBook, IoSchool, IoSettings, IoHelpCircle, IoLogOut } from "react-icons/io5"; // Ícones da react-icons
+import { IoBook, IoSchool, IoSettings, IoHelpCircle, IoLogOut } from "react-icons/io5";
 import LogoIcon from "@/public/assets/up-logo.png";
 import { useSessionContext } from "@/providers/AuthProvider";
 import ProfileImage from "@/public/assets/profile.svg";
@@ -38,14 +38,14 @@ export function Navbar({ menuItems }: NavbarProps) {
       {/* Overlay escuro para o fundo */}
       {isMenuOpen && (
         <div
-          onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar fora
+          onClick={() => setIsMenuOpen(false)}
           className="fixed inset-0 bg-black bg-opacity-50 z-10"
         />
       )}
 
       <nav
         className={`px-4 py-2 w-full h-14 bg-brand-900 flex justify-between items-center rounded-lg shadow-md transition-all duration-300 ${
-          isMenuOpen ? "opacity-0 pointer-events-none" : "" // Navbar desaparece quando o menu é aberto
+          isMenuOpen ? "opacity-0 pointer-events-none" : "" 
         }`}
       >
         <button onClick={() => router.push(initial)}>
@@ -97,8 +97,7 @@ export function Navbar({ menuItems }: NavbarProps) {
               key="/logout"
               className="rounded-md text-black p-2 font-mono bg-slate-100"
               onClick={() => {
-                // Adicione aqui a lógica para o logout
-                router.push("/logout"); // Exemplo de navegação
+                router.push("/logout");
               }}
             >
               Logout
@@ -125,7 +124,7 @@ export function Navbar({ menuItems }: NavbarProps) {
               {user ? (
                 <>
                   <Image
-                    src={ProfileImage} // Imagem do perfil (caso tenha uma)
+                    src={ProfileImage}
                     alt="Foto de perfil"
                     width={60}
                     height={60}
@@ -135,7 +134,7 @@ export function Navbar({ menuItems }: NavbarProps) {
                   <p className="text-sm mb-4 text-white text-center">{user.schollYear}</p>
                 </>
               ) : (
-                <p className="text-lg font-semibold text-white text-center">Aluno</p> // Exibe "Aluno" caso não esteja logado
+                <p className="text-lg font-semibold text-white text-center">Aluno</p>
               )}
               <hr className="w-full border-gray-600 mb-4" />
 
@@ -173,8 +172,7 @@ export function Navbar({ menuItems }: NavbarProps) {
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
                   onClick={() => {
-                    // Adicione aqui a lógica para o logout
-                    router.push("/"); // Exemplo de navegação
+                    router.push("/");
                   }}
                 >
                   <IoLogOut className="text-white" />

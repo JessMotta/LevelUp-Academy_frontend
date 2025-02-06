@@ -3,9 +3,7 @@
 import { GrDocumentPdf } from "react-icons/gr";
 
 export function ButtonPDF () {
-      // url do pdf de teste
   const pdfUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
-     // função pra abrir o pdf
   const handleOpenPdf = () => {
     if (pdfUrl) {
       window.open(pdfUrl, "_blank");

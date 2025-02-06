@@ -15,7 +15,6 @@ export default function ButtonUploadActivity({activityId}: ButtonUploadActivityP
   const [fileName, setFileName] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
 
-  // função do upload do arquivo
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
