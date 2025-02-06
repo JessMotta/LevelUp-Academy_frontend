@@ -1,6 +1,6 @@
 "use client";
 import { STUDENT_PRESTIGE_MOCK } from "@/__mocks__/subjectMainData";
-import BenefitCard from "@/components/ui/BenefitCard";
+import BenefitCardOwned from "@/components/ui/BenefitCardOwned";
 
 export default function OwnedBenefitsTemplate() {
   //const {subjectData} = useSubjectContext();
@@ -18,9 +18,9 @@ export default function OwnedBenefitsTemplate() {
          <h2 className="text-base font-semibold">Benefícios Disponíveis</h2>
          <p className="text-xs font-medium mt-2">Lembre-se de avisar seu professor antes de usar seu benefício</p>
          </div>
-      <div className="flex flex-row flex-nowrap justify-between gap-3">
+      <div className="flex flex-row flex-wrap justify-between gap-3">
        {benefit.ownedBenefits.map((s) => (
-        <BenefitCard key={s.id} benefitData={s} benefitId={s.id.toString()} />
+        <BenefitCardOwned key={s.id} benefitData={s} benefitId={s.id.toString()} />
        ))}
        </div>
      </div>

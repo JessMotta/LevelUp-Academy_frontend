@@ -100,3 +100,12 @@ export type Transaction = {
   amount: number;
   mode: TransactionMode;
 };
+
+
+// benefícios disponiveis em loja
+export type Benefit = {
+  id: number;
+  title: string;
+  description: string;
+  points: number;
+}
