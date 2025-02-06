@@ -1,3 +1,5 @@
+"use client";
+
 import { useSubjectContext } from "@/providers/SubjectProvider";
 import { useRouter } from "next/navigation";
 import { BiSolidStore } from "react-icons/bi";
