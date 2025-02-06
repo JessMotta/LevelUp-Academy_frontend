@@ -95,7 +95,7 @@ export function Navbar({ menuItems }: NavbarProps) {
             {/* Substituindo "Configurações" por "Logout" no desktop */}
             <button
               key="/logout"
-              className="rounded-md text-brand-900 p-2 font-semibold bg-slate-100"
+              className="rounded-md text-black p-2 font-mono bg-slate-100"
               onClick={() => {
                 // Adicione aqui a lógica para o logout
                 router.push("/logout"); // Exemplo de navegação
