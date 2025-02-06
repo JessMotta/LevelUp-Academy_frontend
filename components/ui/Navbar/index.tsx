@@ -1,6 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { JSX } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5";
@@ -9,22 +8,19 @@ import LogoIcon from "@/public/assets/up-logo.png";
 import { useSessionContext } from "@/providers/AuthProvider";
 import ProfileImage from "@/public/assets/profile.svg";
 
-type MenuItem = {
-  label: string;
-  path: string;
-  icon?: JSX.Element;
-};
 
-interface NavbarProps {
-  menuItems: MenuItem[];
-}
 
-export function Navbar({ menuItems }: NavbarProps) {
+export function Navbar() {
+
+
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
+  const pathname = usePathname();
   const { user } = useSessionContext();
   const initial = user ? "/aluno" : "/";
+
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -67,28 +63,30 @@ export function Navbar({ menuItems }: NavbarProps) {
             <button
               key="/minhas-disciplinas"
               className="text-white hover:text-gray-300"
-              onClick={() => router.push("/minhas-disciplinas")}
+              onClick={() => router.push("/aluno")}
             >
               Minhas Disciplinas
             </button>
-            <button
-              key="/minhas-atividades"
+            {pathname.includes("/aluno/disciplina") ? (
+              <button
+              key="/meus-beneficios"
               className="text-white hover:text-gray-300"
-              onClick={() => router.push("/minhas-atividades")}
+              onClick={() => router.push(`${pathname}/beneficios`)}
             >
-              Minhas Atividades
+              Meus Benefícios
             </button>
+            ) : null}            
             <button
               key="/manual-do-aluno"
               className="text-white hover:text-gray-300"
-              onClick={() => router.push("/manual-do-aluno")}
+              onClick={() => router.push("/")} // Substituir por "/manual-do-aluno" quando a página estiver pronta
             >
               Manual do Aluno
             </button>
             <button
               key="/configuracoes"
               className="text-white hover:text-gray-300"
-              onClick={() => router.push("/configuracoes")}
+              onClick={() => router.push("/")} // ubstituir por "/configuracoes" quando a página estiver pronta
             >
               Configurações
             </button>
@@ -98,7 +96,7 @@ export function Navbar({ menuItems }: NavbarProps) {
               className="rounded-md text-black p-2 font-mono bg-slate-100"
               onClick={() => {
                 // Adicione aqui a lógica para o logout
-                router.push("/logout"); // Exemplo de navegação
+                router.push("/"); // Exemplo de navegação
               }}
             >
               Logout
