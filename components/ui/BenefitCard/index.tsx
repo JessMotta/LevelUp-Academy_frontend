@@ -8,9 +8,8 @@ interface BenefitCardProps {
 }
 
 export default function BenefitCard({ benefitId, benefitData }: BenefitCardProps) {
-  console.log('benefitId', benefitId)
     return (
-      <div
+      <div id={benefitId}
         className={(
           "flex flex-col items-center justify-center px-2 rounded-md w-40 h-40 bg-green-11 text-white text-center"   
         )}>
