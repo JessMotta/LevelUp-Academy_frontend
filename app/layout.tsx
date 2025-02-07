@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="pt">
       <body>
         <AllProviders>
-          <div className="w-full h-full">{children}</div>
+          <div className="w-full h-screen">{children}</div>
         </AllProviders>
       </body>
     </html>
