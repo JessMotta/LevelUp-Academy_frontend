@@ -77,14 +77,14 @@ export function Navbar() {
             <button
               key="/manual-do-aluno"
               className="text-white hover:text-gray-300"
-              onClick={() => router.push("/")} // Substituir por "/manual-do-aluno" quando a página estiver pronta
+              onClick={() => router.push("/aluno")} // Substituir por "/manual-do-aluno" quando a página estiver pronta
             >
               Manual do Aluno
             </button>
             <button
               key="/configuracoes"
               className="text-white hover:text-gray-300"
-              onClick={() => router.push("/")} // ubstituir por "/configuracoes" quando a página estiver pronta
+              onClick={() => router.push("/aluno")} // ubstituir por "/configuracoes" quando a página estiver pronta
             >
               Configurações
             </button>
@@ -133,28 +133,42 @@ export function Navbar() {
               <div className="w-full flex flex-col gap-2">
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
-                  onClick={() => router.push("/minhas-disciplinas")}
+                  onClick={() => {
+                    router.push("/aluno")
+                    setIsMenuOpen(false);
+                  }}
                 >
                   <IoSchool className="text-white" />
                   Minhas Disciplinas
                 </button>
+                {pathname.includes("/aluno/disciplina") ? (
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
-                  onClick={() => router.push("/minhas-atividades")}
+                  onClick={() => {
+                    router.push(`${pathname}/beneficios`)
+                    setIsMenuOpen(false);
+                  }}
                 >
-                  <IoBook className="text-white" />
-                  Minhas Atividades
+                  <IoSettings className="text-white" />
+                  Meus Benefícios
                 </button>
+                ): null}
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
-                  onClick={() => router.push("/manual-do-aluno")}
+                  onClick={() => {
+                    router.push("/aluno")
+                    setIsMenuOpen(false);
+                  }}
                 >
                   <IoHelpCircle className="text-white" />
                   Manual do Aluno
                 </button>
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
-                  onClick={() => router.push("/configuracoes")}
+                  onClick={() => {
+                    router.push("/aluno")
+                    setIsMenuOpen(false);
+                  }}
                 >
                   <IoSettings className="text-white" />
                   Configurações
@@ -163,6 +177,7 @@ export function Navbar() {
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
                   onClick={() => {
                     router.push("/");
+                    setIsMenuOpen(false);
                   }}
                 >
                   <IoLogOut className="text-white" />
