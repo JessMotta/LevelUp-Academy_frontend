@@ -3,7 +3,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5";
-import { IoBook, IoSchool, IoSettings, IoHelpCircle, IoLogOut } from "react-icons/io5"; // Ícones da react-icons
+import { IoBook, IoSchool, IoSettings, IoHelpCircle, IoLogOut } from "react-icons/io5";
 import LogoIcon from "@/public/assets/up-logo.png";
 import { useSessionContext } from "@/providers/AuthProvider";
 import ProfileImage from "@/public/assets/profile.svg";
@@ -31,17 +31,16 @@ export function Navbar() {
 
   return (
     <div className="relative w-full z-20 p-2.5">
-      {/* Overlay escuro para o fundo */}
       {isMenuOpen && (
         <div
-          onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar fora
+          onClick={() => setIsMenuOpen(false)}
           className="fixed inset-0 bg-black bg-opacity-50 z-10"
         />
       )}
 
       <nav
         className={`px-4 py-2 w-full h-14 bg-brand-900 flex justify-between items-center rounded-lg shadow-md transition-all duration-300 ${
-          isMenuOpen ? "opacity-0 pointer-events-none" : "" // Navbar desaparece quando o menu é aberto
+          isMenuOpen ? "opacity-0 pointer-events-none" : "" 
         }`}
       >
         <button onClick={() => router.push(initial)}>
@@ -59,7 +58,6 @@ export function Navbar() {
           </button>
         ) : (
           <div className="flex gap-4">
-            {/* Exibindo todos os itens no modo desktop */}
             <button
               key="/minhas-disciplinas"
               className="text-white hover:text-gray-300"
@@ -90,7 +88,6 @@ export function Navbar() {
             >
               Configurações
             </button>
-            {/* Substituindo "Configurações" por "Logout" no desktop */}
             <button
               key="/logout"
               className="rounded-md text-black p-2 font-mono bg-slate-100"
@@ -105,12 +102,9 @@ export function Navbar() {
         )}
       </nav>
 
-      {/* Menu de navegação em dispositivos móveis */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-20 flex justify-end bg-transparent mt-2.5 mb-2.5">
-          {/* Menu lateral, ocupando 80% da tela, com bordas arredondadas em todos os lados */}
           <div className="w-4/5 h-full bg-brand-900 rounded-lg shadow-lg p-6 flex flex-col items-center transition-all duration-300 mr-4">
-            {/* Botão de fechar */}
             <button
               className="absolute top-4 right-4 text-white"
               onClick={() => setIsMenuOpen(false)}
@@ -119,11 +113,10 @@ export function Navbar() {
             </button>
 
             <div className="flex flex-col items-center flex-grow justify-center">
-              {/* Exibindo a foto de perfil e nome do aluno */}
               {user ? (
                 <>
                   <Image
-                    src={ProfileImage} // Imagem do perfil (caso tenha uma)
+                    src={ProfileImage}
                     alt="Foto de perfil"
                     width={60}
                     height={60}
@@ -133,11 +126,10 @@ export function Navbar() {
                   <p className="text-sm mb-4 text-white text-center">{user.schollYear}</p>
                 </>
               ) : (
-                <p className="text-lg font-semibold text-white text-center">Aluno</p> // Exibe "Aluno" caso não esteja logado
+                <p className="text-lg font-semibold text-white text-center">Aluno</p>
               )}
               <hr className="w-full border-gray-600 mb-4" />
 
-              {/* Campos adicionais com ícones */}
               <div className="w-full flex flex-col gap-2">
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
@@ -167,12 +159,10 @@ export function Navbar() {
                   <IoSettings className="text-white" />
                   Configurações
                 </button>
-                {/* Apenas mostrar o Logout no desktop */}
                 <button
                   className="flex items-center gap-2 w-full py-2 px-4 hover:bg-brand-800 rounded-md text-white"
                   onClick={() => {
-                    // Adicione aqui a lógica para o logout
-                    router.push("/"); // Exemplo de navegação
+                    router.push("/");
                   }}
                 >
                   <IoLogOut className="text-white" />
@@ -181,7 +171,6 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* Logo no canto inferior centralizado */}
             <div className="absolute bottom-4 left-1/2 transform translate-x-1">
               <Image
                 src={LogoIcon}

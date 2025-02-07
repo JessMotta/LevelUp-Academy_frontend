@@ -3,7 +3,6 @@ import { STUDENT_PRESTIGE_MOCK } from "@/__mocks__/subjectMainData";
 import BenefitCardOwned from "@/components/ui/BenefitCardOwned";
 
 export default function OwnedBenefitsTemplate() {
-  //const {subjectData} = useSubjectContext();
   const benefit = STUDENT_PRESTIGE_MOCK;
 
   return (
