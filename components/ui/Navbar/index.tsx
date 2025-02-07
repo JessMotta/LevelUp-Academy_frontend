@@ -3,7 +3,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5";
-import { IoBook, IoSchool, IoSettings, IoHelpCircle, IoLogOut } from "react-icons/io5";
+import { IoSchool, IoSettings, IoHelpCircle, IoLogOut } from "react-icons/io5";
 import LogoIcon from "@/public/assets/up-logo.png";
 import { useSessionContext } from "@/providers/AuthProvider";
 import ProfileImage from "@/public/assets/profile.svg";
